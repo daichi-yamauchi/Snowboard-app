@@ -96,8 +96,8 @@ RSpec.configure do |config|
 end
 
 require 'capybara/rspec'
-require 'pp'
 
+# capyparaをspec/requestsで使えるように設定
 RSpec.configure do |config|
   config.include Capybara::DSL, type: :request
   config.include Capybara::RSpecMatchers, type: :request
