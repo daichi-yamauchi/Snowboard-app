@@ -18,6 +18,7 @@
 PreCommit:
   RuboCop:
     enabled: true
+    command: ["rubocop", "-c", "./src/.rubocop.yml"]
     on_warn: fail # Treat all warnings as failures
 #
 #  TrailingWhitespace:
