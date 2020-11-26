@@ -94,3 +94,11 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+require 'capybara/rspec'
+require 'pp'
+
+RSpec.configure do |config|
+  config.include Capybara::DSL, type: :request
+  config.include Capybara::RSpecMatchers, type: :request
+end
