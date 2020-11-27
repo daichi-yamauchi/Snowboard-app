@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title><%= yield(:title) %> | Snowboard App</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+</head>
 
-  <body>
-  <aside>
-    <nav>
-      <ul>
-        <li>ホーム</li>
-        <li>通知</li>
-        <li>ブックマーク</li>
-        <li>メッセージ</li>
-      </ul>
-    </nav>
-  </aside>
+<body>
+    <aside>
+        <nav>
+            <ul>
+                <li>ホーム</li>
+                <li>通知</li>
+                <li>ブックマーク</li>
+                <li>メッセージ</li>
+            </ul>
+        </nav>
+    </aside>
     <%= yield %>
-  </body>
+</body>
+
 </html>
