@@ -12,16 +12,17 @@
 
 <body>
     <aside>
-        <nav>
-            <ul>
-                <li>ホーム</li>
-                <li>通知</li>
-                <li>ブックマーク</li>
-                <li>メッセージ</li>
-            </ul>
-        </nav>
+        <%= render 'layouts/nav' %>
+        <div>
+            sidefooter
+        </div>
     </aside>
-    <%= yield %>
+    <main>
+        <%= yield %>
+    </main>
+    <footer>
+        <%= render 'layouts/nav' %>
+    </footer>
 </body>
 
 </html>
