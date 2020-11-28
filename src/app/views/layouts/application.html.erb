@@ -1,25 +1,32 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= yield(:title) %> | Snowboard App</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
 
-  <body>
-  <aside>
-    <nav>
-      <ul>
-        <li>ホーム</li>
-        <li>通知</li>
-        <li>ブックマーク</li>
-        <li>メッセージ</li>
-      </ul>
-    </nav>
-  </aside>
-    <%= yield %>
-  </body>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <aside>
+        <%= render 'layouts/nav'%>
+        <div class="side-footer">
+            Side footer
+        </div>
+    </aside>
+    <main>
+        <%= yield %>
+    </main>
+    <footer>
+        Footer
+    </footer>
+</body>
+
 </html>

@@ -1,4 +1,33 @@
 {
+  "files.trimFinalNewlines": true,
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
   "editor.formatOnSave": true,
-  "eslint.run": "onSave"
+  "eslint.run": "onSave",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[html]": {
+    "editor.tabSize": 4
+  },
+  "[css]": {
+    "editor.tabSize": 4
+  },
+  "[javascript]": {
+    "editor.tabSize": 2
+  },
+  "[json]": {
+    "editor.tabSize": 2
+  },
+  "[ruby]": {
+    "editor.tabSize": 2
+  },
+  "[erb]": {
+    "editor.defaultFormatter": "HookyQR.beautify",
+    "editor.tabSize": 2
+  },
+  "beautify.language": {
+    "html": {
+      "type": ["htm", "html", "erb"]
+    }
+  },
+  "prettier.configPath": ".prettierrc.json",
 }

@@ -9,6 +9,10 @@
 #
 # See https://github.com/rubocop-hq/rubocop/blob/master/manual/configuration.md
 
+# prettierの設定に合わせる
+inherit_gem:
+  rubocop-config-prettier: config/rubocop.yml
+
 ## rubocop 関連の gem を require します。
 require:
   - rubocop-performance
@@ -28,6 +32,9 @@ AllCops:
 
 Rails:
   Enabled: true
+
+Layout/CommentIndentation:
+  Enabled: false
 
 Layout/LineLength:
   Max: 150
