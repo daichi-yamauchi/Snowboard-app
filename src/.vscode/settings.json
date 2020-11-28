@@ -4,23 +4,23 @@
   "files.trimTrailingWhitespace": true,
   "editor.formatOnSave": true,
   "eslint.run": "onSave",
+  "editor.defaultFormatter": "HookyQR.beautify",
   "[html]": {
     "editor.tabSize": 4
   },
   "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.tabSize": 4
   },
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.tabSize": 2
   },
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.tabSize": 2
   },
   "[ruby]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[erb]": {
     "editor.tabSize": 2
   },
   "beautify.language": {

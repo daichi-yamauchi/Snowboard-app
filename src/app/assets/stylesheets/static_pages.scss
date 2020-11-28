@@ -2,7 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-$bottom-nav-height: 60px;
+$side-menu-height: 40px;
+$bottom-menu-height: 10vh;
 
 body {
     margin: 0;
@@ -15,21 +16,57 @@ main {
     width: 700px;
     margin: 0 auto;
 }
+
 aside {
     width: 25%;
     min-width: 250px;
     display: flex;
     flex-direction: column;
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
 }
-nav > ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+
+nav li {
+    padding: 0 24px;
+    height: $side-menu-height;
+    display: flex;
+    align-items: center;
+
+    &.dammy-space {
+        display: none;
+    }
+
+    .material-icons {
+        font-size: 36px;
+        margin: 0 16px 0 0;
+    }
+
+    .menu-text {
+        font-size: 16px;
+    }
+
+    &.post {
+        border-radius: $side-menu-height;
+        height: $side-menu-height * 1.1;
+        justify-content: center;
+        margin: 10px auto;
+        width: 120px;
+
+        i {
+            margin: 0 10px 0 0;
+        }
+    }
 }
-div.sidefooter {
+
+.side-footer {
     height: 300px;
     margin-top: auto;
 }
+
 footer {
     display: none;
 }
@@ -38,29 +75,76 @@ footer {
     body {
         flex-direction: column;
     }
+
     main {
         width: 100%;
         flex: 1;
     }
-    footer {
-        display: block;
-        margin-bottom: $bottom-nav-height;
-    }
-    div.sidefooter {
+
+    .side-footer {
         display: none;
     }
+
+    nav>ul {
+        display: flex;
+
+        li {
+            padding: 0;
+            height: $bottom-menu-height;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            &.dammy-space {
+                display: block;
+                flex-basis: 20vw;
+                flex-grow: 0;
+            }
+
+            .material-icons {
+                font-size: 30px;
+                margin: 0;
+            }
+
+            .menu-text {
+                font-size: 10px;
+            }
+
+            &.post {
+                position: fixed;
+                border-radius: $bottom-menu-height;
+                justify-content: center;
+                bottom: -1vh;
+                left: 50%;
+                transform: translate(-50%, 0);
+                margin: auto;
+                width: 22vw;
+                height: $bottom-menu-height + 2vh;
+
+                .material-icons {
+                    font-size: 34px;
+                }
+
+                .menu-text {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+
+    footer {
+        display: block;
+        margin-bottom: $bottom-menu-height;
+    }
+
     aside {
         position: fixed;
         bottom: 0;
         width: 100%;
     }
-    nav > ul {
-        display: flex;
-        li {
-            flex: 1;
-            height: $bottom-nav-height;
-        }
-    }
+
 }
 
 /* 🔧デバッグ用🔧 */
@@ -69,13 +153,14 @@ nav li {
     border: solid 1px black;
 }
 
-div.sidefooter {
+div.side-footer {
     background: rgb(235, 203, 135);
     border: solid 1px black;
 }
 
-body > * {
+body>* {
     background: #deffaa;
     border: solid 1px black;
 }
+
 /* 🔧デバッグ用終了🔧 */

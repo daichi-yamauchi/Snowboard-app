@@ -1,7 +1,7 @@
 {
   "overrides": [
     {
-      "files": "*.css",
+      "files": ["*.css", "*scss"],
       "options": {
         "tabWidth": 4
       }
