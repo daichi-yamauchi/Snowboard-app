@@ -85,7 +85,7 @@ footer {
         display: none;
     }
 
-    nav>ul {
+    nav > ul {
         display: flex;
 
         li {
@@ -144,7 +144,6 @@ footer {
         bottom: 0;
         width: 100%;
     }
-
 }
 
 /* 🔧デバッグ用🔧 */
@@ -158,7 +157,7 @@ div.side-footer {
     border: solid 1px black;
 }
 
-body>* {
+body > * {
     background: #deffaa;
     border: solid 1px black;
 }

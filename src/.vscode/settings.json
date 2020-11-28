@@ -4,7 +4,7 @@
   "files.trimTrailingWhitespace": true,
   "editor.formatOnSave": true,
   "eslint.run": "onSave",
-  "editor.defaultFormatter": "HookyQR.beautify",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[html]": {
     "editor.tabSize": 4
   },
@@ -21,6 +21,7 @@
     "editor.tabSize": 2
   },
   "[erb]": {
+    "editor.defaultFormatter": "HookyQR.beautify",
     "editor.tabSize": 2
   },
   "beautify.language": {
