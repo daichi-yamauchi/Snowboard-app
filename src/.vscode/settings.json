@@ -22,12 +22,12 @@
   },
   "[erb]": {
     "editor.defaultFormatter": "HookyQR.beautify",
-    "editor.tabSize": 2
+    "editor.tabSize": 4
   },
   "beautify.language": {
     "html": {
       "type": ["htm", "html", "erb"]
     }
   },
-  "prettier.configPath": ".prettierrc.json",
+  "prettier.configPath": ".prettierrc.json"
 }
