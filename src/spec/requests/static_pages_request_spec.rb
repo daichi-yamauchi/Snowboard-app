@@ -6,7 +6,7 @@ RSpec.describe 'StaticPages', type: :request do
   describe 'visit /' do
     it 'render new' do
       visit '/'
-      expect(page).to have_title `Home | #{base_title}`
+      expect(page).to have_title "ホーム | #{base_title}"
     end
   end
 end
