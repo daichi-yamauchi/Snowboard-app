@@ -14,18 +14,20 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
-<body>
+<body class="m-0 d-flex flex-column min-vh-100">
     <%= render 'layouts/header'%>
-    <aside>
+    <aside class="bg-lightdark d-sm-flex flex-sm-column">
         <%= render 'layouts/nav'%>
-        <div class="side-footer">
+        <div class="d-none d-sm-block mt-5 h-10">
             Side footer
         </div>
     </aside>
-    <main>
-        <%= yield %>
+    <main class="w-100 flex-1 mt-header-height">
+        <div class="pl-sm-side-menu-width">
+            <%= yield %>
+        </div>
     </main>
-    <footer>
+    <footer class="d-sm-none">
         Footer
     </footer>
 </body>

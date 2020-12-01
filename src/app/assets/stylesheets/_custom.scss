@@ -1,0 +1,18 @@
+.bg-lightdark {
+    background-color: #eee;
+}
+
+.font-small {
+    font-size: 0.7rem;
+}
+
+.material-icons.icon-large {
+    font-size: 30px;
+}
+
+// smallの設定
+@media (min-width: 576px) {
+    .font-sm-medium {
+        font-size: 1rem;
+    }
+}
