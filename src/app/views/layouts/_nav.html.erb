@@ -1,25 +1,22 @@
+<%
+    menuitems = [
+        {icon: "home", text: "ホーム"},
+        {icon: "notifications_none", text: "通知"},
+        {icon: "edit", text: "投稿", liclass: "menu-post order-sm-4 "},
+        {icon: "bookmark_border", text: "ブックマーク"},
+        {icon: "message", text: "メッセージ"},
+    ]
+        %>
 <nav>
-    <ul>
-        <li>
-            <i class="material-icons">home</i>
-            <span class="menu-text">ホーム</span>
+    <ul class="m-0 p-0 d-flex flex-sm-column">
+
+        <% menuitems.each do |item| %>
+        <li
+            class="menu-item border-bottom border-right d-flex flex-column flex-sm-row p-sm-3 justify-content-center justify-content-sm-start align-items-center <%= item[:liclass] %>">
+            <i class="material-icons icon-large mr-sm-3"><%= item[:icon] %></i>
+            <span class="font-small font-sm-medium"><%= item[:text] %></span>
         </li>
-        <li>
-            <i class="material-icons">notifications_none</i>
-            <span class="menu-text">通知</span>
-        </li>
-        <li class="dammy-space"></li>
-        <li>
-            <i class="material-icons">bookmark_border</i>
-            <span class="menu-text">ブックマーク</span>
-        </li>
-        <li>
-            <i class="material-icons">message</i>
-            <span class="menu-text">メッセージ</span>
-        </li>
-        <li class="post">
-            <i class="material-icons">edit</i>
-            <span class="menu-text">投稿</span>
-        </li>
+        <% end %>
+
     </ul>
 </nav>
