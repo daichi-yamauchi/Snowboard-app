@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'static_pages#home'
-  get '/help', to: 'static_pages#help' # 未実装
-  get '/signup', to: 'users#new'
+  root "static_pages#home"
+  get "/help", to: "static_pages#help" # 未実装
+  get "/signup", to: "users#new"
 end

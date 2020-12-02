@@ -32,6 +32,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'capybara'
+  gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 4.0.1'
   gem 'spring-commands-rspec'
 end
@@ -42,9 +43,11 @@ group :development do
   gem 'overcommit'
   gem 'rubocop', require: false
   gem 'rubocop-config-prettier'
+  gem 'rubocop-config-rufo'
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec'
+  gem 'rufo'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
