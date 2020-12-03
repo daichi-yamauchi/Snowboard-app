@@ -40,6 +40,10 @@ Layout/CommentIndentation:
 Layout/LineLength:
   Max: 150
 
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
+
 RSpec/ContextWording:
   Enabled: false
 
