@@ -5,6 +5,7 @@
   "editor.formatOnSave": true,
   "eslint.run": "onSave",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSaveTimeout": 5000,
   "[html]": {
     "editor.tabSize": 4
   },
@@ -18,16 +19,25 @@
     "editor.tabSize": 2
   },
   "[ruby]": {
+    "editor.defaultFormatter": "mbessey.vscode-rufo",
     "editor.tabSize": 2
   },
   "[erb]": {
     "editor.defaultFormatter": "HookyQR.beautify",
     "editor.tabSize": 4
   },
+  "[gemfile]": {
+    "editor.defaultFormatter": "mbessey.vscode-rufo",
+    "editor.tabSize": 2
+  },
+  "ruby.lint": {
+    "rubocop": true
+  },
   "beautify.language": {
     "html": {
       "type": ["htm", "html", "erb"]
     }
   },
-  "prettier.configPath": ".prettierrc.json"
+  "prettier.configPath": ".prettierrc.json",
+  "prettier.singleQuote": true
 }

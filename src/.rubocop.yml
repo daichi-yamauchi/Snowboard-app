@@ -9,9 +9,9 @@
 #
 # See https://github.com/rubocop-hq/rubocop/blob/master/manual/configuration.md
 
-# prettierの設定に合わせる
 inherit_gem:
-  rubocop-config-prettier: config/rubocop.yml
+  # rubocop-config-prettier: config/rubocop.yml # prettierの設定に合わせる
+  rubocop-config-rufo: rubocop.yml # rufoの設定に合わせる
 
 ## rubocop 関連の gem を require します。
 require:
@@ -23,6 +23,7 @@ require:
 AllCops:
   TargetRubyVersion: 2.7
   TargetRailsVersion: 6.0
+  NewCops: enable
   Exclude:
     - "vendor/**/*"
     - "bin/**/*"
@@ -38,6 +39,10 @@ Layout/CommentIndentation:
 
 Layout/LineLength:
   Max: 150
+
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
 
 RSpec/ContextWording:
   Enabled: false
@@ -84,3 +89,7 @@ Style/Documentation:
 # https://qiita.com/jnchito/items/e2687e2bf2f49411a1b4
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+  # 文字列はダブルクォーテーションを使用
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
