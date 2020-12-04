@@ -63,4 +63,16 @@ RSpec.describe User, type: :model do
     user = create(:user, email: mixed_case_email)
     expect(user).not_to eq mixed_case_email.downcase
   end
+
+  it '空のpasswordを拒否すること' do
+    pw = ' ' * 8
+    user = build(:user, password: pw, password_confirmation: pw)
+    expect(user).not_to be_valid
+  end
+
+  it '短いpasswordを拒否すること' do
+    pw = 'a' * 7
+    user = build(:user, password: pw, password_confirmation: pw)
+    expect(user).not_to be_valid
+  end
 end
