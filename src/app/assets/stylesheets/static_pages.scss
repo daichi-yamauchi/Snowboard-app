@@ -10,18 +10,19 @@ $side-menu-width: 180px;
     margin-top: $header-height;
 }
 
+.mb-bottom-nav-height {
+    margin-bottom: $bottom-menu-height;
+}
+
 .menu-item {
     flex: 1;
     height: $bottom-menu-height;
 }
 
-footer {
-    margin-bottom: $bottom-menu-height;
-}
-
-aside {
+.aside-fixed {
     position: fixed;
     bottom: 0;
+    left: 0;
     width: 100%;
 }
 
@@ -30,7 +31,8 @@ aside {
     .pl-sm-side-menu-width {
         padding-left: $side-menu-width;
     }
-    aside {
+
+    .aside-fixed {
         left: 0;
         width: $side-menu-width;
         height: 100%;
