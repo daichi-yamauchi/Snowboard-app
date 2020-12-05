@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
-<body class="px-3 d-flex flex-column min-vh-100 mb-bottom-nav-height mb-sm-0">
+<body class="d-flex flex-column min-vh-100 mb-bottom-nav-height mb-sm-0">
     <%= render 'layouts/header'%>
     <aside class="aside-fixed bg-lightdark d-sm-flex flex-sm-column">
         <%= render 'layouts/nav'%>
@@ -22,15 +22,15 @@
             Side footer
         </div>
     </aside>
-    <main class="w-100 flex-1 mt-header-height">
-        <div class="pl-sm-side-menu-width">
+    <main class="w-100 p-3 flex-1 ml-sm-side-menu-width mt-header-height">
+        <div class="">
             <%= yield %>
         </div>
     </main>
-    <footer class="d-sm-none">
+    <footer class="p-3 d-sm-none">
         Footer
     </footer>
-    <div class="pl-sm-side-menu-width">
+    <div class="ml-sm-side-menu-width p-3">
         <%= debug(params) if Rails.env.development? %>
     </div>
 

@@ -28,8 +28,8 @@ $side-menu-width: 180px;
 
 // smallの設定
 @media (min-width: 576px) {
-    .pl-sm-side-menu-width {
-        padding-left: $side-menu-width;
+    .ml-sm-side-menu-width {
+        margin-left: $side-menu-width;
     }
 
     .aside-fixed {
