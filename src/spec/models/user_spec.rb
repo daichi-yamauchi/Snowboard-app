@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+RSpec.describe 'User Model', type: :model do
   it '有効ユーザ情報を受諾すること' do
     user = build(:user)
     expect(user).to be_valid
