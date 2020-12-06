@@ -1,21 +1,23 @@
 <%
     menuitems = [
-        {icon: "home", text: "ホーム"},
-        {icon: "notifications_none", text: "通知"},
-        {icon: "edit", text: "投稿", liclass: "menu-post order-sm-4 "},
-        {icon: "bookmark_border", text: "ブックマーク"},
-        {icon: "message", text: "メッセージ"},
+        {icon: "home", text: "ホーム", link: root_path},
+        {icon: "notifications_none", text: "通知", link: ''},
+        {icon: "edit", text: "投稿", aclass:"menu-post order-sm-4", liclass: "justify-content-sm-center", link: ''},
+        {icon: "bookmark_border", text: "ブックマーク", link: ''},
+        {icon: "message", text: "メッセージ", link: ''},
     ]
         %>
 <nav>
-    <ul class="m-0 p-0 d-flex flex-sm-column">
+    <ul class="nav m-0 p-0 d-flex flex-sm-column">
 
         <% menuitems.each do |item| %>
+        <%= link_to item[:link], class: "menu-item px-0 border-bottom border-right p-sm-3 text-dark nav-link #{item[:aclass]}" do %>
         <li
-            class="menu-item border-bottom border-right d-flex flex-column flex-sm-row p-sm-3 justify-content-center justify-content-sm-start align-items-center <%= item[:liclass] %>">
+            class="h-100 d-flex flex-column flex-sm-row justify-content-center align-items-center justify-content-sm-start <%= item[:liclass] %>">
             <i class="material-icons icon-large mr-sm-3"><%= item[:icon] %></i>
             <span class="font-small font-sm-medium"><%= item[:text] %></span>
         </li>
+        <% end %>
         <% end %>
 
     </ul>

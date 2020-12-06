@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 $header-height: 60px;
-$bottom-menu-height: 8vh;
+$bottom-menu-height: 60px;
 $side-menu-width: 180px;
 
 .mt-header-height {
@@ -41,7 +41,6 @@ $side-menu-width: 180px;
 
     .menu-post {
         border-radius: 100px;
-        justify-content: center;
         margin: 10px auto;
         border: 0.5px solid #ddd;
     }
