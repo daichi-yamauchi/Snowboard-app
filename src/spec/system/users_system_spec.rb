@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'User system spec', type: :system do
+RSpec.describe 'Users system spec', type: :system do
   describe 'Signup' do
     context 'Input valid data to form and click signup' do
       subject { page }
