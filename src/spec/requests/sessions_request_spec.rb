@@ -18,5 +18,11 @@ RSpec.describe 'Sessions request', type: :request do
     it 'logged in' do
       expect(logged_in?).to be_truthy
     end
+
+    describe 'DELETE #destroy' do
+      before { delete logout_path }
+      it { expect(response).to redirect_to root_path }
+      it { expect(logged_in?).to be_falsey }
+    end
   end
 end
