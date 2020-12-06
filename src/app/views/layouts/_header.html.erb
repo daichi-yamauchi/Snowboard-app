@@ -11,8 +11,21 @@
                 <button class="btn btn-dark my-0" type="submit">検索</button>
             </form>
         </div>
-        <div class="mr-2">
-            <img src="https://cdn.learnenough.com/kitten.jpg" alt="アカウント" class="rounded-circle avator-icon">
+        <div class="mr-2 dropdown">
+            <% if logged_in? %>
+            <div class="dropdown-toggle" data-toggle="dropdown" id="user-menu">
+                <img src="<%= gravatar_for current_user %>" alt="<%= current_user.name %>"
+                    class="rounded-circle w-50px">
+            </div>
+            <div class="dropdown-menu">
+                <%= link_to "プロフィール", current_user, class: "dropdown-item" %>
+                <%= link_to "設定", '#', class: "dropdown-item" %>
+                <div class="dropdown-divider"></div>
+                <%= link_to "ログアウト", logout_path, method: :delete, class: "dropdown-item" %>
+            </div>
+            <% else %>
+            <%= link_to "ログイン", login_path %>
+            <% end %>
         </div>
     </nav>
 </header>
