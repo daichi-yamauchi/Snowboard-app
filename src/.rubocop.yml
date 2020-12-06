@@ -50,6 +50,12 @@ RSpec/ContextWording:
 RSpec/DescribedClass:
   Enabled: false
 
+RSpec/EmptyLineAfterFinalLet:
+  Enabled: false
+
+RSpec/EmptyLineAfterHook:
+  Enabled: false
+
 RSpec/ExampleLength:
   Enabled: false
 
