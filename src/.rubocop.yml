@@ -44,6 +44,10 @@ Metrics/BlockLength:
   Exclude:
     - "spec/**/*"
 
+Rails/DynamicFindBy:
+  Exclude:
+    - "spec/**/*"
+
 RSpec/ContextWording:
   Enabled: false
 
