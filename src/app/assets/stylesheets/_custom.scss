@@ -2,12 +2,25 @@
     background-color: #eee;
 }
 
+.w-100px {
+    width: 100px;
+}
+
+.mw-600px {
+    max-width: 600px;
+}
+
 .font-small {
-    font-size: 0.7rem;
+    font-size: 0.6rem;
 }
 
 .material-icons.icon-large {
     font-size: 30px;
+}
+
+.no-decoration {
+    display: block;
+    text-decoration: none;
 }
 
 // smallの設定

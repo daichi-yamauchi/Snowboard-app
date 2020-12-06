@@ -11,7 +11,7 @@ class User < ApplicationRecord
                     uniqueness: true
 
   has_secure_password
-  validates :password, presence: true, length: { minimum: 8 }
+  validates :password, length: { minimum: 8 }
 
   def inspect
     "name: #{name}, email: #{email}, password: #{password}"
