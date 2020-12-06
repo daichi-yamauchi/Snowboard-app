@@ -54,7 +54,13 @@ RSpec/ContextWording:
 RSpec/DescribedClass:
   Enabled: false
 
+RSpec/EmptyLineAfterExample:
+  Enabled: false
+
 RSpec/EmptyLineAfterFinalLet:
+  Enabled: false
+
+RSpec/EmptyLineAfterSubject:
   Enabled: false
 
 RSpec/EmptyLineAfterHook:
@@ -69,7 +75,6 @@ RSpec/ExpectInHook:
 # An instance variable can be used when needed, but use let when possible.
 RSpec/InstanceVariable:
   Enabled: false
-
 RSpec/MessageSpies:
   Enabled: false
 

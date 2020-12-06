@@ -2,6 +2,13 @@ require 'rails_helper'
 
 RSpec.describe 'Users system spec', type: :system do
   describe 'Signup' do
+    describe 'Visit /signup' do
+      let(:base_title) { 'Snowboard App' }
+      before { visit '/signup' }
+
+      it { expect(page).to have_title "新規登録 | #{base_title}" }
+    end
+
     context 'Input valid data to form and click signup' do
       subject { page }
 
