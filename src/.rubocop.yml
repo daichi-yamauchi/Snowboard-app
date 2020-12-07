@@ -72,6 +72,10 @@ RSpec/ExampleLength:
 RSpec/ExpectInHook:
   Enabled: false
 
+Rails/HelperInstanceVariable:
+  Exclude:
+    - "app/helpers/sessions_helper.rb"
+
 # An instance variable can be used when needed, but use let when possible.
 RSpec/InstanceVariable:
   Enabled: false
@@ -83,6 +87,10 @@ RSpec/MultipleExpectations:
 
 RSpec/NestedGroups:
   Max: 5
+
+Rails/SkipsModelValidations:
+  AllowedMethods:
+    - update_attribute
 
 ## 日本語コメントを許可します。
 Style/AsciiComments:

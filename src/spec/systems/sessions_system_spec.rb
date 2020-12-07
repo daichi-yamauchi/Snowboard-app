@@ -53,8 +53,7 @@ RSpec.describe 'Sessions system spec', type: :system do
           before { find_link('ログアウト').click }
           it { is_expected.to have_current_path root_path }
           it { is_expected.to have_link 'ログイン' }
-          it { is_expected.not_to have_link 'ログアウト' }
-          it { is_expected.not_to have_link 'プロフィール' }
+          it { is_expected.not_to have_selector '#user-menu' }
         end
       end
     end
