@@ -13,15 +13,8 @@ RSpec.describe 'Sessions system spec', type: :system do
 
   describe 'Login' do
     context 'with invalid information' do
-      before do
-        visit '/login'
-        fill_in 'メールアドレス', with: ''
-        fill_in 'パスワード', with: ''
-        click_button 'ログイン'
-      end
-
+      before { login(user, email: '', password: '') }
       it { is_expected.to have_selector '.alert-danger' }
-
       it do
         visit '/'
         expect(page).not_to have_selector '.alert-danger'
@@ -29,13 +22,7 @@ RSpec.describe 'Sessions system spec', type: :system do
     end
 
     context 'with valid email/invalid password' do
-      before do
-        visit '/login'
-        fill_in 'メールアドレス', with: user.email
-        fill_in 'パスワード', with: ''
-        click_button 'ログイン'
-      end
-
+      before { login(user, password: '') }
       it { is_expected.to have_selector '.alert-danger' }
     end
 
@@ -43,6 +30,7 @@ RSpec.describe 'Sessions system spec', type: :system do
       before { login(user) }
       it { is_expected.to have_current_path user_path(User.last) }
       it { is_expected.not_to have_link login_path }
+      # it { expect(cookies[:remember_token]).not_to be_nil } # requests specで実施
 
       describe 'dropdown user menu' do
         before { find_by_id('user-menu').click }
@@ -55,6 +43,11 @@ RSpec.describe 'Sessions system spec', type: :system do
           it { is_expected.to have_link 'ログイン' }
           it { is_expected.not_to have_selector '#user-menu' }
         end
+
+        # describe 'Login without remembering' do # requests specで実施
+        #   before { login(user, remember_me: true) }
+        #   it { expect(cookies[:remember_token]).to be_nil }
+        # end
       end
     end
   end

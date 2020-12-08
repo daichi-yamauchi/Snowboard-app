@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'User Model', type: :model do
+RSpec.describe User, type: :model do
   describe 'Attribute' do
     describe 'Valid user' do
       let(:user) { build(:user) }

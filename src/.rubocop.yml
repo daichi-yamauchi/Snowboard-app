@@ -40,6 +40,9 @@ Layout/CommentIndentation:
 Layout/LineLength:
   Max: 150
 
+Metrics/AbcSize:
+  Max: 21
+
 Metrics/BlockLength:
   Exclude:
     - "spec/**/*"
