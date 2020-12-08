@@ -1,18 +1,26 @@
 <% provide(:title, "ログイン") %>
 <h2 class="h2 mb-3">ログイン</h2>
 
+<%= form_with(url: login_path, scope: :session, local: true) do |f| %>
+<%# <%= render 'shared/error_messages' %>
+
 <div class="form-group">
-    <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
-    <%# <%= render 'shared/error_messages' %>
-
     <%= f.label :email, "メールアドレス" %>
-    <%= f.email_field :email, class: "form-control mb-3", placeholder: "例: user@example.com" %>
-
+    <%= f.email_field :email, class: "form-control", placeholder: "例: user@example.com" %>
+</div>
+<div class="form-group">
     <%= f.label :password, "パスワード" %>
-    <%= f.password_field :password, class: "form-control mb-3", placeholder: "Password" %>
-
-    <%= f.submit "ログイン", class: "btn btn-primary mb-3" %>
+    <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+</div>
+<div class="form-group form-check">
+    <%= f.label :remember_me, class: "form-check-label" do %>
+    <%= f.check_box :remember_me, class: "form-check-input" %>
+    <span>ログインしたままにする</span>
     <% end %>
+</div>
 
-    <p>アカウントをお持ちでないですか？ <%= link_to "新規登録", signup_path %></p>
+<%= f.submit "ログイン", class: "btn btn-primary btn-block mb-2" %>
+<% end %>
+
+<p>アカウントをお持ちでないですか？ <%= link_to "新規登録", signup_path %></p>
 </div>
