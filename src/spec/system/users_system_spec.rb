@@ -40,10 +40,7 @@ RSpec.describe 'Users system spec', type: :system do
       it { is_expected.to have_current_path users_path }
       it { is_expected.to have_selector '#error_explanation' }
       it { is_expected.to have_selector '.alert-danger' }
-
-      it do
-        expect(all(:css, '#error_explanation li').size).to eq 5
-      end
+      it { expect(all(:css, '#error_explanation li').size).to eq 4 }
     end
   end
 end
