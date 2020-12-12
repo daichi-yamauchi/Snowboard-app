@@ -47,4 +47,42 @@ RSpec.describe 'Users request', type: :request do
       end
     end
   end
+
+  describe 'GET edit_user_path / PATCH user_path' do
+    let(:user1) { create(:user) }
+    let(:user2) { create(:user) }
+    let(:update_info) do
+      { user: { name: 'Example User',
+               email: 'user@example.com' } }
+    end
+    describe 'should redirect edit when not logged in' do
+      before { get edit_user_path(user1) }
+      it { expect(flash).not_to be_empty }
+      it { expect(response).to redirect_to login_url }
+    end
+
+    describe 'should redirect update when not logged in' do
+      before { patch user_path(user1), params: update_info }
+      it { expect(flash).not_to be_empty }
+      it { expect(response).to redirect_to login_url }
+    end
+
+    describe 'should redirect edit when logged in as wrong user' do
+      before do
+        post_login(user1)
+        get edit_user_path(user2)
+      end
+      it { expect(flash).to be_empty }
+      it { expect(response).to redirect_to root_url }
+    end
+
+    describe 'should redirect update when logged in as wrong user' do
+      before do
+        post_login(user1)
+        patch user_path(user2), params: update_info
+      end
+      it { expect(flash).to be_empty }
+      it { expect(response).to redirect_to root_url }
+    end
+  end
 end
