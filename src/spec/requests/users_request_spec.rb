@@ -7,6 +7,11 @@ RSpec.describe 'Users request', type: :request do
     it { expect(response).to have_http_status :success }
   end
 
+  describe 'GET users_path' do
+    before { get users_path }
+    it { expect(response).to redirect_to login_url }
+  end
+
   describe 'POST users_path' do
     context 'Invalid user information' do
       # 無効なユーザ情報

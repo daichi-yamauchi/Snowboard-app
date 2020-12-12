@@ -1,0 +1,10 @@
+<% provide(:title, 'メンターを探す') %>
+<h2 class="h2 mb-3"><%= yield(:title) %></h2>
+
+<%= render 'shared/pagination' %>
+
+<ul class="m-0 list-unstyled">
+    <%= render @users %>
+</ul>
+
+<%= render 'shared/pagination' %>
