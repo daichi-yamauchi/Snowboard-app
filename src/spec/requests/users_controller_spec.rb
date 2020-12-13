@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Users request', type: :request do
+RSpec.describe 'UsersController', type: :request do
   describe 'GET /signup' do
     let(:base_title) { 'Snowboard App' }
     before { get signup_path }
@@ -66,6 +66,21 @@ RSpec.describe 'Users request', type: :request do
       it { expect(response).to redirect_to login_url }
     end
 
+    describe 'should not allow the admin attribute to be edited via the web' do
+      let(:admin_params) do
+        { user: { password: 'password',
+                 password_confirmation: 'password',
+                 admin: true } }
+      end
+      before { post_login(user1) }
+
+      it 'not change admin attribute' do
+        expect(user1.admin).to be false
+        patch user_path(user1), params: admin_params
+        expect(user1.reload.admin).to be false
+      end
+    end
+
     describe 'should redirect update when not logged in' do
       before { patch user_path(user1), params: update_info }
       it { expect(flash).not_to be_empty }
@@ -88,6 +103,31 @@ RSpec.describe 'Users request', type: :request do
       end
       it { expect(flash).to be_empty }
       it { expect(response).to redirect_to root_url }
+    end
+  end
+
+  describe '#destroy' do
+    before do
+      @user = create(:user)
+      @user_admin = create(:user, :admin)
+    end
+
+    context 'when not logged in' do
+      it { expect { delete user_path(@user) }.to change(User, :count).by(0) }
+    end
+
+    context 'when logged in as a admin' do
+      before { post_login(@user_admin) }
+      it { expect { delete user_path(@user) }.to change(User, :count).by(-1) }
+    end
+
+    context 'when logged in as a non-admin' do
+      before { post_login(@user) }
+      it { expect { delete user_path(@user_admin) }.to change(User, :count).by(0) }
+      it do
+        delete user_path(@user_admin)
+        expect(response).to redirect_to(root_path)
+      end
     end
   end
 end
