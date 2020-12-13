@@ -21,8 +21,8 @@ RSpec.describe 'Users system spec', type: :system do
         click_button '登録'
       end
 
-      it { is_expected.to have_current_path user_path(User.last) }
-      it { is_expected.to have_selector '.alert-success' }
+      xit { is_expected.to have_current_path user_path(User.last) }
+      xit { is_expected.to have_selector '.alert-success' }
     end
 
     context 'Input invalid data to form and click signup' do
