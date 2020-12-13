@@ -1,4 +1,5 @@
 require 'capybara/rspec'
+require 'rack_session_access/capybara'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
@@ -15,4 +16,9 @@ RSpec.configure do |config|
   # capyparaをspec/requestsで使えるように設定
   config.include Capybara::DSL, type: :request
   config.include Capybara::RSpecMatchers, type: :request
+
+  # system specのドライバ設定
+  config.before(:each, type: :system) do
+    driven_by :selenium_chrome_headless
+  end
 end

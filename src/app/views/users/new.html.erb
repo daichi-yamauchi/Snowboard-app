@@ -1,26 +1,4 @@
 <% provide(:title, "新規登録") %>
-<h2 class="h2 mb-3">新規登録</h2>
 
-<div class="form-group">
-    <%= form_with(model: @user, local: true) do |f| %>
-    <%= render 'shared/error_messages' %>
-</div>
-<div class="form-group">
-    <%= f.label :name, "ユーザーネーム" %>
-    <%= f.text_field :name, class: "form-control", placeholder: "例: すのめん" %>
-</div>
-<div class="form-group">
-    <%= f.label :email, "メールアドレス" %>
-    <%= f.email_field :email, class: "form-control", placeholder: "例: user@example.com" %>
-</div>
-<div class="form-group">
-    <%= f.label :password, "パスワード" %>
-    <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
-</div>
-<div class="form-group">
-    <%= f.label :password_confirmation, "パスワード再入力" %>
-    <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Password" %>
-</div>
-
-<%= f.submit "登録", class: "btn btn-primary btn-block" %>
-<% end %>
+<% provide(:submit_button, "登録") %>
+<%= render 'users/account_form'%>
