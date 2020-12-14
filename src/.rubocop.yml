@@ -37,6 +37,9 @@ Rails:
 Layout/CommentIndentation:
   Enabled: false
 
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
+
 Layout/LineLength:
   Max: 150
 

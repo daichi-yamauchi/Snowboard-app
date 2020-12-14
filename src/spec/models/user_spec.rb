@@ -99,7 +99,7 @@ RSpec.describe User, type: :model do
       let(:user) { build(:user) }
       describe 'def authenticated?(remember_token)' do
         context 'remember_digest is nil' do
-          it { user.authenticated?('') }
+          it { user.authenticated?(:remember, '') }
         end
       end
     end
