@@ -10,7 +10,7 @@ RSpec.describe 'Sessions request', type: :request do
     let(:user) { create(:user) }
 
     context 'with remembering' do
-      before { post_login(user, remember_me: '1') }
+      before { post_login(user) }
       it { expect(response).to redirect_to user_path(user) }
       it { expect(logged_in?).to be_truthy }
       it { expect(cookies[:remember_token]).to eq assigns(:user).remember_token }

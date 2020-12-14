@@ -1,9 +1,8 @@
 <h2 class="h2 mb-3"><%= yield(:title) %></h2>
 
-<div class="form-group">
-    <%= form_with(model: @user, local: true) do |f| %>
-    <%= render 'shared/error_messages' %>
-</div>
+<%= form_with(model: @user, local: true) do |f| %>
+<%= render 'shared/error_messages' %>
+
 <div class="form-group">
     <%= f.label :name, "ユーザーネーム" %>
     <%= f.text_field :name, class: "form-control", placeholder: "例: すのめん" %>

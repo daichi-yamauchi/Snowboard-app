@@ -1,18 +1,28 @@
 require 'rails_helper'
 
 RSpec.describe 'UsersController', type: :request do
-  describe 'GET /signup' do
+  describe "#new GET signup '/signup'" do
     let(:base_title) { 'Snowboard App' }
     before { get signup_path }
     it { expect(response).to have_http_status :success }
   end
 
-  describe 'GET users_path' do
+  describe "#index GET users '/users'" do
     before { get users_path }
     it { expect(response).to redirect_to login_url }
   end
 
-  describe 'POST users_path' do
+  describe "#show GET user '/users/:id'" do
+    context 'inactive user'
+    let(:user_inactive) { create(:user, :inactive) }
+    before { login(user_inactive) }
+    it do
+      get user_path(user_inactive)
+      expect(response).to redirect_to root_path
+    end
+  end
+
+  describe "#create POST users '/users'" do
     context 'Invalid user information' do
       # 無効なユーザ情報
       let(:invalid_user_info) do
@@ -33,40 +43,80 @@ RSpec.describe 'UsersController', type: :request do
                  password: 'password',
                  password_confirmation: 'password' } }
       end
+      before { ActionMailer::Base.deliveries.clear }
 
-      describe 'Post' do
-        it do
-          expect { post users_path, params: valid_user_info }.to change(User, :count).by(1)
-        end
+      it 'is expected to change `User.count` by 0 and email sent' do
+        expect { post users_path, params: valid_user_info }.to change(User, :count).by(1)
+        expect(ActionMailer::Base.deliveries.size).to eq 1
       end
 
-      describe 'Response' do
-        subject { response }
+      describe 'After POST' do
         before { post users_path, params: valid_user_info }
+        let(:user) { assigns(:user) }
 
-        xit { is_expected.to redirect_to user_path(User.last) }
-        it { is_expected.to have_http_status :redirect }
-        xit 'logged in' do
-          expect(logged_in?).to be_truthy
+        it 'is expected to redirect to root and not to activate account' do
+          expect(response).to have_http_status :redirect
+          expect(response).to redirect_to root_path
+          expect(user.activated?).to be false
+        end
+
+        it 'is expected not to be able to login without activation' do
+          post_login(user, password: user.password)
+          expect(logged_in?).to be false
+        end
+
+        describe 'GET activate url' do
+          it 'is expected not to activate with invalid token' do
+            get edit_account_activation_path('invalid token', email: user.email)
+            expect(logged_in?).to be false
+          end
+          it 'is expected not to activate with wrong email' do
+            get edit_account_activation_path(user.activation_token, email: 'wrong')
+            expect(logged_in?).to be false
+          end
+          it 'is expected to activate, redirect to user and to login' do
+            get edit_account_activation_path(user.activation_token, email: user.email)
+            expect(user.reload.activated?).to be true
+            expect(response).to have_http_status :redirect
+            expect(response).to redirect_to user
+            expect(logged_in?).to be true
+          end
         end
       end
     end
   end
 
-  describe 'GET edit_user_path / PATCH user_path' do
+  describe "#edit GET edit_user 'users/i:id/edit' / PATCH user_path" do
+    let(:user1) { create(:user) }
+    let(:user2) { create(:user) }
+
+    context 'when not logged in' do
+      it 'is expexted to redirect to login' do
+        get edit_user_path(user1)
+        expect(flash).not_to be_empty
+        expect(response).to redirect_to login_url
+      end
+    end
+
+    context 'when logged in as wrong user' do
+      before { post_login(user1) }
+      it 'is expexted to redirect to root' do
+        get edit_user_path(user2)
+        expect(flash).to be_empty
+        expect(response).to redirect_to root_url
+      end
+    end
+  end
+
+  describe "#update PATCH user 'user/:id'" do
     let(:user1) { create(:user) }
     let(:user2) { create(:user) }
     let(:update_info) do
       { user: { name: 'Example User',
                email: 'user@example.com' } }
     end
-    describe 'should redirect edit when not logged in' do
-      before { get edit_user_path(user1) }
-      it { expect(flash).not_to be_empty }
-      it { expect(response).to redirect_to login_url }
-    end
 
-    describe 'should not allow the admin attribute to be edited via the web' do
+    describe 'edit admin attribute' do
       let(:admin_params) do
         { user: { password: 'password',
                  password_confirmation: 'password',
@@ -74,35 +124,28 @@ RSpec.describe 'UsersController', type: :request do
       end
       before { post_login(user1) }
 
-      it 'not change admin attribute' do
+      it 'is expexted not to change admin attribute' do
         expect(user1.admin).to be false
         patch user_path(user1), params: admin_params
         expect(user1.reload.admin).to be false
       end
     end
 
-    describe 'should redirect update when not logged in' do
-      before { patch user_path(user1), params: update_info }
-      it { expect(flash).not_to be_empty }
-      it { expect(response).to redirect_to login_url }
-    end
-
-    describe 'should redirect edit when logged in as wrong user' do
-      before do
-        post_login(user1)
-        get edit_user_path(user2)
+    context 'when not logged in' do
+      it 'is expexted to redirect to login' do
+        patch user_path(user1), params: update_info
+        expect(flash).not_to be_empty
+        expect(response).to redirect_to login_url
       end
-      it { expect(flash).to be_empty }
-      it { expect(response).to redirect_to root_url }
     end
 
-    describe 'should redirect update when logged in as wrong user' do
-      before do
-        post_login(user1)
+    context 'when logged in as wrong user' do
+      before { post_login(user1) }
+      it 'is expexted to redirect to root' do
         patch user_path(user2), params: update_info
+        expect(flash).to be_empty
+        expect(response).to redirect_to root_url
       end
-      it { expect(flash).to be_empty }
-      it { expect(response).to redirect_to root_url }
     end
   end
 
