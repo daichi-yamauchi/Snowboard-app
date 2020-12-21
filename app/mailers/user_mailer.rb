@@ -4,9 +4,8 @@ class UserMailer < ApplicationMailer
     mail to: user.email, subject: '【スノメン】アカウントの有効化'
   end
 
-  def password_reset
-    @greeting = 'Hi'
-
-    mail to: 'to@example.org'
+  def password_reset(user)
+    @user = user
+    mail to: user.email, subject: '【スノメン】パスワードの再設定'
   end
 end

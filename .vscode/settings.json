@@ -31,7 +31,7 @@
     "editor.tabSize": 2
   },
   "ruby.lint": {
-    "rubocop": true
+    // "rubocop": true
   },
   "beautify.language": {
     "html": {
