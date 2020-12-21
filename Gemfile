@@ -11,7 +11,6 @@ gem 'faker', '2.1.2'
 gem 'jbuilder', '~> 2.7'
 gem 'puma', '~> 4.1'
 gem 'sass-rails', '>= 6'
-gem 'sqlite3', '~> 1.4'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
 gem 'will_paginate', '3.1.8'
@@ -34,6 +33,7 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 4.0.1'
   gem 'spring-commands-rspec'
+  gem 'sqlite3', '~> 1.4'
 end
 
 group :development do
@@ -54,6 +54,10 @@ end
 group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
+end
+
+group :production do
+  gem 'pg', '1.1.4'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
