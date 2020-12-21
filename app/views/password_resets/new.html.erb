@@ -1,0 +1,16 @@
+<% provide(:title, "パスワードの再設定") %>
+<h2 class="h2 mb-3">パスワードの再設定</h2>
+
+<p>パスワード再設定のメールを送付することができます。</p>
+
+<%= form_with(url: password_resets_path, scope: :password_reset, local: true) do |f| %>
+
+<div class="form-group">
+    <%= f.label :email, "メールアドレス" %>
+    <%= f.email_field :email, class: "form-control", placeholder: "例: user@example.com" %>
+</div>
+
+<%= f.submit "パスワード再設定メールの送信", class: "btn btn-primary btn-block mb-2" %>
+<% end %>
+
+</div>
