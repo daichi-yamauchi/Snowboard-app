@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :micropost do
-    content { 'micropost test' }
+    sequence(:content) { |n| "micropost test#{n}" }
     created_at { Time.zone.now }
     association :user
 
