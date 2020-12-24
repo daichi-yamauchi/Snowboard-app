@@ -5,10 +5,14 @@ ruby '2.7.2'
 
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 
+gem 'active_storage_validations', '0.8.2'
+gem 'aws-sdk-s3', '1.46.0', require: false
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'faker', '2.1.2'
+gem 'image_processing', '1.9.3'
 gem 'jbuilder', '~> 2.7'
+gem 'mini_magick', '4.9.5'
 gem 'puma', '~> 4.1'
 gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'

@@ -12,6 +12,7 @@ RSpec.describe 'MicropostsInterfaces', type: :system do
   end
 
   describe 'check display of home page' do
+    it { is_expected.to have_selector 'input[type="file"' }
     it { expect(first(:css, 'section.user_info')).to have_text "#{user.microposts.count} microposts" }
     it { is_expected.to have_selector 'ul.pagination' }
     it { is_expected.to have_link 'delete' }
@@ -48,6 +49,9 @@ RSpec.describe 'MicropostsInterfaces', type: :system do
       let(:content) { 'おはよう' }
       let(:post_micropost) do
         fill_in 'micropost[content]', with: content
+        # find('input[type="file"]').click
+        # attach_file 'input[type="file"]', 'spec/fixtures/images/kitten.jpg'
+        find('input[type="file"]').set('spec/fixtures/images/kitten.jpg')
         click_button 'Post'
       end
 
@@ -57,6 +61,7 @@ RSpec.describe 'MicropostsInterfaces', type: :system do
         before { post_micropost }
         it { is_expected.to have_current_path root_path }
         it { is_expected.to have_text content }
+        it { is_expected.to have_selector 'span.content>img' }
       end
     end
   end
