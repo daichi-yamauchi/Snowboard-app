@@ -86,6 +86,31 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe 'Instance methods' do
+    let(:user) { create(:user) }
+    let(:target_user) { create(:user) }
+
+    describe 'def authenticated?(remember_token)' do
+      context 'remember_digest is nil' do
+        it { user.authenticated?(:remember, '') }
+      end
+    end
+
+    describe 'def follow and unfollow' do
+      before { user.follow(target_user) }
+
+      it 'follow make following? true' do
+        expect(user.following?(target_user)).to be true
+        expect(target_user.followers.include?(user)).to be true
+      end
+
+      it 'unfollow make following? false' do
+        user.unfollow(target_user)
+        expect(user.following?(target_user)).to be false
+      end
+    end
+  end
+
   describe 'Class Methods' do
     describe 'def digest' do
       it { expect(User.digest('a')).not_to be nil }
@@ -93,15 +118,6 @@ RSpec.describe User, type: :model do
 
     describe 'def new_token' do
       it { expect(User.new_token).not_to be nil }
-    end
-
-    describe 'Instance methods' do
-      let(:user) { build(:user) }
-      describe 'def authenticated?(remember_token)' do
-        context 'remember_digest is nil' do
-          it { user.authenticated?(:remember, '') }
-        end
-      end
     end
   end
 
