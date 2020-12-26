@@ -16,8 +16,8 @@ Rails.application.configure do # rubocop:disable Metrics/BlockLength
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 
-  # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
+  # アップロードされたファイルをAWSに保存する
+  config.active_storage.service = :amazon
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true

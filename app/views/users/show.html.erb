@@ -1,10 +1,20 @@
 <% provide(:title, @user.name) %>
 <div class="d-flex p-3">
 
-    <img src="<%= gravatar_for @user %>" alt="<%= @user.name %>" class="rounded-circle w-100px">
+    <img src="<%= gravatar_for @user %>" alt="<%= @user.name %>" class="profile rounded-circle w-100px">
     <div class="ml-3">
-        <h3>
+        <h1 class="title">
             <%= @user.name %>
-        </h3>
+        </h1>
     </div>
+
+</div>
+<div class="col-md-8">
+    <% if @user.microposts.any? %>
+    <h3>Microposts (<%= @user.microposts.count %>)</h3>
+    <ol class="microposts">
+        <%= render @microposts %>
+    </ol>
+    <%= will_paginate @microposts %>
+    <% end %>
 </div>
