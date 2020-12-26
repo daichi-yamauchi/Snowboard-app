@@ -145,4 +145,12 @@ RSpec.describe User, type: :model do
       expect { user.destroy }.to change(Micropost, :count).by(-1)
     end
   end
+
+  describe 'Associated microposts' do
+    let(:user) { create(:user) }
+    before { user.microposts.create!(content: 'Lorem ipsum') }
+    it 'is expected to destroy when user is destroyed' do
+      expect { user.destroy }.to change(Micropost, :count).by(-1)
+    end
+  end
 end
