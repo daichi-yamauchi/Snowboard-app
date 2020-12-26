@@ -88,7 +88,9 @@ RSpec.describe User, type: :model do
 
   describe 'Instance methods' do
     let(:user) { create(:user) }
-    let(:target_user) { create(:user) }
+    let(:followed) { create(:user) }
+    let(:unfollowed) { create(:user) }
+    before { user.follow(followed) }
 
     describe 'def authenticated?(remember_token)' do
       context 'remember_digest is nil' do
@@ -97,16 +99,31 @@ RSpec.describe User, type: :model do
     end
 
     describe 'def follow and unfollow' do
-      before { user.follow(target_user) }
-
       it 'follow make following? true' do
-        expect(user.following?(target_user)).to be true
-        expect(target_user.followers.include?(user)).to be true
+        expect(user.following?(followed)).to be true
+        expect(followed.followers.include?(user)).to be true
       end
 
       it 'unfollow make following? false' do
-        user.unfollow(target_user)
-        expect(user.following?(target_user)).to be false
+        user.unfollow(followed)
+        expect(user.following?(followed)).to be false
+      end
+    end
+
+    describe 'def feed' do
+      before do
+        create_list(:micropost, 10, user: user)
+        create_list(:micropost, 10, user: followed)
+        create_list(:micropost, 10, user: unfollowed)
+      end
+      it "is exected to include followed's microposts" do
+        followed.microposts.each { |post| expect(user.feed).to include post }
+      end
+      it 'is exected to include my microposts' do
+        user.microposts.each { |post| expect(user.feed).to include post }
+      end
+      it "is exected not to include unfollowed's microposts" do
+        unfollowed.microposts.each { |post| expect(user.feed).not_to include post }
       end
     end
   end
