@@ -86,6 +86,48 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe 'Instance methods' do
+    let(:user) { create(:user) }
+    let(:followed) { create(:user) }
+    let(:unfollowed) { create(:user) }
+    before { user.follow(followed) }
+
+    describe 'def authenticated?(remember_token)' do
+      context 'remember_digest is nil' do
+        it { user.authenticated?(:remember, '') }
+      end
+    end
+
+    describe 'def follow and unfollow' do
+      it 'follow make following? true' do
+        expect(user.following?(followed)).to be true
+        expect(followed.followers.include?(user)).to be true
+      end
+
+      it 'unfollow make following? false' do
+        user.unfollow(followed)
+        expect(user.following?(followed)).to be false
+      end
+    end
+
+    describe 'def feed' do
+      before do
+        create_list(:micropost, 10, user: user)
+        create_list(:micropost, 10, user: followed)
+        create_list(:micropost, 10, user: unfollowed)
+      end
+      it "is exected to include followed's microposts" do
+        followed.microposts.each { |post| expect(user.feed).to include post }
+      end
+      it 'is exected to include my microposts' do
+        user.microposts.each { |post| expect(user.feed).to include post }
+      end
+      it "is exected not to include unfollowed's microposts" do
+        unfollowed.microposts.each { |post| expect(user.feed).not_to include post }
+      end
+    end
+  end
+
   describe 'Class Methods' do
     describe 'def digest' do
       it { expect(User.digest('a')).not_to be nil }
@@ -93,15 +135,6 @@ RSpec.describe User, type: :model do
 
     describe 'def new_token' do
       it { expect(User.new_token).not_to be nil }
-    end
-
-    describe 'Instance methods' do
-      let(:user) { build(:user) }
-      describe 'def authenticated?(remember_token)' do
-        context 'remember_digest is nil' do
-          it { user.authenticated?(:remember, '') }
-        end
-      end
     end
   end
 
