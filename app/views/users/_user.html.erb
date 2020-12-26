@@ -2,6 +2,6 @@
     <img src="<%= gravatar_for user %>" alt="<%= user.name %>" class="rounded-circle w-50px">
     <%= link_to user.name, user_path(user) %>
     <% if current_user.admin? && !current_user?(user) %>
-    | <%= link_to "削除", user, method: :delete, data: { confirm: "You sure?" } %>
+    <%= link_to "削除", user, method: :delete, data: { confirm: "You sure?" } %>
     <% end %>
 </li>
