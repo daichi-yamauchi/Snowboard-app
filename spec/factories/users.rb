@@ -15,5 +15,11 @@ FactoryBot.define do
       activated { false }
       activated_at { nil }
     end
+
+    trait :has_posts do
+      after(:create) do |user|
+        create(:post, user: user)
+      end
+    end
   end
 end
