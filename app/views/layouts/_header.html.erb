@@ -2,7 +2,7 @@
     <nav class="h-100 d-flex align-items-center">
         <div class="my-2 mr-auto">
             <%= link_to root_path, class: 'text-dark' do %>
-            <h1>スノメン</h1>
+            <span class="font-large">スノメン</span>
             <% end %>
         </div>
         <div class="my-2 mr-4 d-none d-sm-block">
@@ -14,8 +14,7 @@
         <div class="mr-2 dropdown">
             <% if logged_in? %>
             <div class="dropdown-toggle" data-toggle="dropdown" id="user-menu">
-                <img src="<%= gravatar_for current_user %>" alt="<%= current_user.name %>"
-                    class="rounded-circle w-50px">
+                <%= gravatar_for current_user, add_class: "icon-medium" %>
             </div>
             <div class="dropdown-menu">
                 <%= link_to "プロフィール", current_user, class: "dropdown-item" %>

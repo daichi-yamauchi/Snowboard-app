@@ -19,3 +19,11 @@ User.create!(name: 'Example User',
                activated: true,
                activated_at: Time.zone.now)
 end
+
+# ユーザーの一部を対象にマイクロポストを生成する
+users = User.order(:created_at).take(6)
+50.times do
+  title = Faker::Lorem.sentence(word_count: 20)
+  content = Faker::Lorem.sentence(word_count: 200)
+  users.each { |user| user.posts.create!(title: title, content: content) }
+end
