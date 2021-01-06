@@ -27,16 +27,10 @@ gem 'will_paginate-bootstrap4'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'capybara'
-  gem 'factory_bot_rails'
   gem 'pry-byebug'  # デバッグを実施(Ruby 2.0以降で動作する)
   gem 'pry-doc'     # methodを表示
   gem 'pry-rails'   # rails console(もしくは、rails c)でirbの代わりにpryを使われる
   gem 'pry-stack_explorer' # スタックをたどれる
-  gem 'rack_session_access'
-  gem 'rails-controller-testing'
-  gem 'rspec-rails', '~> 4.0.1'
-  gem 'spring-commands-rspec'
   gem 'sqlite3', '~> 1.4'
 end
 
@@ -56,7 +50,13 @@ group :development do
 end
 
 group :test do
+  gem 'capybara'
+  gem 'factory_bot_rails'
+  gem 'rack_session_access'
+  gem 'rails-controller-testing'
+  gem 'rspec-rails', '~> 4.0.1'
   gem 'selenium-webdriver'
+  gem 'spring-commands-rspec'
   gem 'webdrivers'
 end
 
