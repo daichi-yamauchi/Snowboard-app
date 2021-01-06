@@ -12,6 +12,7 @@ RSpec.describe 'UsersEdits', type: :system do
       fill_in 'メールアドレス', with: 'testuser@invalid'
       fill_in 'パスワード', with: 'aaa'
       fill_in 'パスワード再入力', with: 'aaa'
+      # binding.pry
       click_button '更新'
     end
     it { is_expected.to have_current_path user_path(user) }

@@ -1,5 +1,5 @@
 <li class="py-3 border-bottom border-dark">
-    <img src="<%= gravatar_for user %>" alt="<%= user.name %>" class="rounded-circle w-50px">
+    <%= gravatar_for user, add_class: 'icon-medium' %>
     <%= link_to user.name, user_path(user) %>
     <% if current_user.admin? && !current_user?(user) %>
     | <%= link_to "削除", user, method: :delete, data: { confirm: "You sure?" } %>

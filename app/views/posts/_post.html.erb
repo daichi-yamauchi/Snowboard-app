@@ -5,6 +5,9 @@
             <span class="font-post-user my-auto ml-2 v-align-middle">
                 <%= link_to post.user.name, post.user %>が投稿
             </span>
+            <%= link_to "delete", post, method: :delete,
+                                        data: { confirm: "投稿を削除しますか？" },
+                                        class: "material-icons icon-action ml-auto" %>
         </div>
         <div class="line-h-1">
             <h3 class="display-1line"><%= post.title %></h3>

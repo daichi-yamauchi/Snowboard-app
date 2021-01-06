@@ -1,3 +1,5 @@
+// フォントサイズ
+
 .font-small {
     font-size: 0.6rem;
 }
@@ -19,6 +21,8 @@
     line-height: 1;
 }
 
+// テキストの配置
+
 .v-align-middle {
     vertical-align: middle;
 }
@@ -35,7 +39,19 @@
     height: 4.5em; // 3em（行）x line-heightの1.5
 }
 
+// アクションアイコン
+.icon-action {
+    color: lightgray;
+    text-decoration: none;
+}
+
+.icon-action:hover {
+    color: gray;
+    text-decoration: none;
+}
+
 // smallの設定
+
 @media (min-width: 576px) {
     .font-sm-medium {
         font-size: 1rem;

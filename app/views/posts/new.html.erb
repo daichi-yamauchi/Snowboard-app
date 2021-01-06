@@ -1,0 +1,17 @@
+<% provide(:title, "投稿作成") %>
+<h2 class="h2 mb-3"><%= yield :title %></h2>
+
+<%= form_with(url: posts_path, model: @post, local: true) do |f| %>
+<%= render 'shared/error_messages', object: f.object %>
+
+<div class="form-group">
+    <%= f.label :title, "タイトル" %>
+    <%= f.text_field :title, class: "form-control", placeholder: "例:滑り方のコツ" %>
+</div>
+<div class="form-group">
+    <%= f.label :content, "本文" %>
+    <%= f.text_area :content, class: "form-control", placeholder: "投稿内容を記載" %>
+</div>
+
+<%= f.submit "投稿", class: "btn btn-primary btn-block mb-2" %>
+<% end %>
