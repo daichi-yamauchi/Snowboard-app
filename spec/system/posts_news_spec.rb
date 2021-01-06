@@ -27,7 +27,7 @@ RSpec.describe 'PostsNews', type: :system do
       let(:post) do
         fill_in 'タイトル', with: title
         fill_in '本文', with: content
-        # find('input[type="file"]').set('spec/fixtures/images/kitten.jpg')
+        find('#post_image').set('spec/fixtures/kitten.jpg')
         click_button '投稿'
       end
 
@@ -37,7 +37,7 @@ RSpec.describe 'PostsNews', type: :system do
         before { post }
         it { is_expected.to have_current_path root_path }
         it { is_expected.to have_text content }
-        # it { is_expected.to have_selector 'span.content>img' }
+        it { is_expected.to have_selector "#post-#{Post.last.id} img" }
       end
     end
   end

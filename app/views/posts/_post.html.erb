@@ -1,18 +1,24 @@
-<li id="post-<%= post.id %>" class="d-flex py-3 border-bottom">
-    <div class="col-8 pl-1">
-        <div class="d-flex">
-            <%= gravatar_for post.user, add_class: "icon-small" %>
-            <span class="font-post-user my-auto ml-2 v-align-middle">
-                <%= link_to post.user.name, post.user %>が投稿
-            </span>
-            <%= link_to "delete", post, method: :delete,
+<li id="post-<%= post.id %>" class="py-3 ls-none border-bottom">
+    <div class="d-flex justify-content-between col-12 pl-1">
+        <div class="flex-grow-1 <%= post.image.attached? ? "col-8" : "col-12" %>">
+            <div class="d-flex">
+                <%= gravatar_for post.user, add_class: "icon-small" %>
+                <span class="font-post-user my-auto ml-2 v-align-middle">
+                    <%= link_to post.user.name, post.user %>が投稿
+                </span>
+                <% if current_user?(post.user) %>
+                <%= link_to "delete", post, method: :delete,
                                         data: { confirm: "投稿を削除しますか？" },
                                         class: "material-icons icon-action ml-auto" %>
+                <% end %>
+            </div>
+            <div class="line-h-1">
+                <h3 class="display-1line"><%= post.title %></h3>
+            </div>
+            <p class="display-2line m-0"><%= post.content %></p>
         </div>
-        <div class="line-h-1">
-            <h3 class="display-1line"><%= post.title %></h3>
-        </div>
-        <p class="display-2line m-0"><%= post.content %></p>
+        <% if post.image.attached? %>
+        <div><%= image_tag post.display_image, class: "w-100" %></div>
+        <% end %>
     </div>
-    <div class="bg-pink col-4"> 写真 </div>
 </li>

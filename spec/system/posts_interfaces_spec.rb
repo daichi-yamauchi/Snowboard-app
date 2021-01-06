@@ -11,24 +11,14 @@ RSpec.describe 'PostsInterfaces', type: :system do
     visit root_path
   end
 
-  xdescribe 'check display of home page' do
-    it { is_expected.to have_selector 'input[type="file"' }
-    it { expect(first(:css, 'section.user_info')).to have_text "#{user.posts.count} posts" }
+  describe 'check display of home page' do
     it { is_expected.to have_selector 'ul.pagination' }
     it { is_expected.to have_link 'delete' }
-    it '0 and 1 micropost is displayed correctly' do
-      login(other_user)
-      visit root_path
-      expect(first(:css, 'section.user_info')).to have_text '0 posts'
-      create(:micropost, user: other_user)
-      visit root_path
-      expect(first(:css, 'section.user_info')).to have_text '1 post'
-    end
   end
 
-  xdescribe 'check display of other_user page' do
+  describe 'check display of other_user page' do
     before do
-      create_list(:micropost, 3, user: other_user)
+      create_list(:post, 3, user: other_user)
       visit user_path(other_user)
     end
     it { is_expected.to have_no_link 'delete' }
