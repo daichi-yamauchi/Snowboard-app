@@ -32,3 +32,11 @@ users = User.order(:created_at).take(6)
   post_type = PostType.find_by(id: rand(2) + 1)
   users.each { |user| user.posts.create!(title: title, content: content, post_type: post_type) }
 end
+
+# 以下のリレーションシップを作成する
+users = User.all
+user = users.first
+following = users[2..50]
+followers = users[3..40]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }

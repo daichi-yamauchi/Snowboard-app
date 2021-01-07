@@ -173,4 +173,22 @@ RSpec.describe 'UsersController', type: :request do
       end
     end
   end
+
+  describe '#following' do
+    before do
+      @user = create(:user)
+    end
+
+    context 'when not logged in' do
+      it 'get following page make redirect to login page' do
+        get following_user_path(@user)
+        expect(response).to redirect_to login_url
+      end
+
+      it 'get follower page make redirect to login page' do
+        get followers_user_path(@user)
+        expect(response).to redirect_to login_url
+      end
+    end
+  end
 end

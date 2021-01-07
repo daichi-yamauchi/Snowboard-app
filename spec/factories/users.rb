@@ -21,5 +21,18 @@ FactoryBot.define do
         create(:post, user: user)
       end
     end
+
+    trait :has_relationship do
+      after(:create) do |user|
+        following = create_list(:user, 5)
+        following.each do |target|
+          user.follow(target)
+        end
+        follower = create_list(:user, 5)
+        follower.each do |target|
+          target.follow(user)
+        end
+      end
+    end
   end
 end
