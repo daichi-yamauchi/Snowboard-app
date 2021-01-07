@@ -5,6 +5,7 @@ RSpec.describe 'PostsNews', type: :system do
   let(:user) { create(:user) }
 
   before do
+    create(:post_type)
     login(user)
     visit new_post_path
   end
@@ -26,6 +27,7 @@ RSpec.describe 'PostsNews', type: :system do
       let(:content) { 'テスト投稿です。' }
       let(:post) do
         fill_in 'タイトル', with: title
+        choose 'post_post_type_id_1'
         fill_in '本文', with: content
         find('#post_image').set('spec/fixtures/kitten.jpg')
         click_button '投稿'

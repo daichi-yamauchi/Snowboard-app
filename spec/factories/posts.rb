@@ -4,6 +4,7 @@ FactoryBot.define do
     sequence(:content) { |n| "content test-#{n}" }
     created_at { Time.zone.now }
     association :user
+    association :post_type
 
     trait :yesterday do
       content { 'yesterday' }

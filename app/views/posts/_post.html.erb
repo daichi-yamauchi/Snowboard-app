@@ -13,9 +13,12 @@
                 <% end %>
             </div>
             <div class="line-h-1">
-                <h3 class="display-1line"><%= post.title %></h3>
+                <h3 class="display-1line mb-0"><%= post.title %></h3>
             </div>
-            <p class="display-2line m-0"><%= post.content %></p>
+            <div class="rounded-pill d-inline px-2 font-mid-s bg-<%= post.post_type.name %>">
+                <%= post.post_type.name_j %>
+            </div>
+            <p class="display-2line mt-2 mb-0"><%= post.content %></p>
         </div>
         <% if post.image.attached? %>
         <div><%= image_tag post.display_image, class: "w-100" %></div>

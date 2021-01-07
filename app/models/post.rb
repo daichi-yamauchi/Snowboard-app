@@ -1,9 +1,11 @@
 class Post < ApplicationRecord
   belongs_to :user
+  belongs_to :post_type
   has_one_attached :image
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
   validates :title, presence: true
+  validates :post_type_id, presence: true
   validates :content, presence: true
   validates :image, content_type: { in: %w[image/jpeg image/gif image/png],
                                     message: '規定のフォーマットにしてください。' },
