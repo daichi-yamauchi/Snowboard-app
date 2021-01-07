@@ -110,7 +110,7 @@ RSpec.describe User, type: :model do
       end
     end
 
-    xdescribe 'def feed' do
+    describe 'def feed' do
       before do
         create_list(:post, 10, user: user)
         create_list(:post, 10, user: followed)
