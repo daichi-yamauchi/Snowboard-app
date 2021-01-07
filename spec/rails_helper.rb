@@ -26,4 +26,6 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   # ログインモジュールの読み込み
   config.include LoginModule
+  # アプリケーションヘルパーの読み込み
+  config.include ApplicationHelper
 end

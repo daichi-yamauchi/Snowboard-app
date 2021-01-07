@@ -7,7 +7,7 @@ RSpec.describe 'UsersSignup', type: :system do
     let(:base_title) { 'Snowboard App' }
     before { visit '/signup' }
 
-    it { is_expected.to have_title "新規登録 | #{base_title}" }
+    it { is_expected.to have_title full_title('新規登録') }
   end
 
   context 'Input valid data to form and click signup' do

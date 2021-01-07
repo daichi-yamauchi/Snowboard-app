@@ -25,3 +25,7 @@ $gray-medium-light: #eaeaea;
     word-break: break-all;
     @include box_sizing;
 }
+
+.bg-pink {
+    background-color: pink;
+}

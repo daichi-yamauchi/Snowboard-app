@@ -2,22 +2,6 @@
     background-color: #eee;
 }
 
-.w-100px {
-    width: 100px;
-}
-
-.w-50px {
-    width: 50px;
-}
-
-.mw-600px {
-    max-width: 600px;
-}
-
-.font-small {
-    font-size: 0.6rem;
-}
-
 .material-icons.icon-large {
     font-size: 30px;
 }
@@ -27,11 +11,8 @@
     text-decoration: none;
 }
 
-// smallの設定
-@media (min-width: 576px) {
-    .font-sm-medium {
-        font-size: 1rem;
-    }
+.ls-none {
+    list-style: none;
 }
 
 .users {

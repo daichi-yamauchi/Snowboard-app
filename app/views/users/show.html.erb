@@ -1,10 +1,19 @@
 <% provide(:title, @user.name) %>
-<div class="d-flex p-3">
+<div class="p-0">
 
-    <img src="<%= gravatar_for @user %>" alt="<%= @user.name %>" class="rounded-circle w-100px">
+    <%= gravatar_for @user, add_class: "icon-big" %>
     <div class="ml-3">
-        <h3>
+        <h1>
             <%= @user.name %>
-        </h3>
+        </h1>
+    </div>
+    <div class="">
+        <% if @user.posts.any? %>
+        <h3>投稿 (<%= @user.posts.count %>)</h3>
+        <ol class="p-0">
+            <%= render @posts %>
+        </ol>
+        <%= will_paginate @posts %>
+        <% end %>
     </div>
 </div>

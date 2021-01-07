@@ -1,0 +1,63 @@
+// フォントサイズ
+
+.font-small {
+    font-size: 0.6rem;
+}
+
+.font-mid-s {
+    font-size: 0.8rem;
+}
+
+.font-large {
+    font-size: 2.5rem;
+}
+
+.font-post-user {
+    font-size: 0.8rem;
+}
+
+.font_lh-small {
+    font-size: 0.6rem;
+    line-height: 0.6rem;
+}
+
+.line-h-1 {
+    line-height: 1;
+}
+
+// テキストの配置
+
+.v-align-middle {
+    vertical-align: middle;
+}
+
+.display-1line {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    height: 1.5em; // 2em（行）x line-heightの1.5
+}
+
+.display-2line {
+    overflow: hidden;
+    height: 4.5em; // 3em（行）x line-heightの1.5
+}
+
+// アクションアイコン
+.icon-action {
+    color: lightgray;
+    text-decoration: none;
+}
+
+.icon-action:hover {
+    color: gray;
+    text-decoration: none;
+}
+
+// smallの設定
+
+@media (min-width: 576px) {
+    .font-sm-medium {
+        font-size: 1rem;
+    }
+}

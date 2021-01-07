@@ -17,7 +17,7 @@ Rails.application.configure do # rubocop:disable Metrics/BlockLength
   config.assets.compile = false
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
+  config.active_storage.service = :amazon
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
