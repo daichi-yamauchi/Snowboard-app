@@ -33,6 +33,17 @@ users = User.order(:created_at).take(6)
   users.each { |user| user.posts.create!(title: title, content: content, post_type: post_type) }
 end
 
+# 投稿の一部を対象にコメントを生成する
+posts = Post.order(:created_at).take(6)
+user_num = User.all.length
+posts.each do |post|
+  5.times do
+    content = Faker::Lorem.sentence(word_count: 50)
+    user = User.find_by(id: rand(user_num) + 1)
+    post.comments.create!(user: user, content: content)
+  end
+end
+
 # 以下のリレーションシップを作成する
 users = User.all
 user = users.first

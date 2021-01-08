@@ -15,5 +15,11 @@ FactoryBot.define do
       content { 'day_before_yesterday' }
       created_at { 2.days.ago }
     end
+
+    trait :has_comment do
+      after(:create) do |post|
+        create_list(:comment, 5, post: post)
+      end
+    end
   end
 end

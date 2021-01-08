@@ -6,6 +6,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     # redirect_to root_url and return if @post.nil?
     # @posts = @user.posts.paginate(page: params[:page])
+    @comments = @post.comments.all
   end
 
   def new
