@@ -3,8 +3,8 @@
         <div class="flex-grow-1 <%= post.image.attached? ? "col-8" : "col-12" %>">
             <div class="d-flex">
                 <%= gravatar_for post.user, add_class: "icon-small" %>
-                <span class="font-post-user my-auto ml-2 v-align-middle">
-                    <%= link_to post.user.name, post.user %>が投稿
+                <span class="font-ms my-auto ml-2 v-align-middle">
+                    <%= link_to post.user.name, post.user, class:"link" %>が投稿
                 </span>
                 <% if current_user?(post.user) %>
                 <%= link_to "delete", post, method: :delete,
@@ -13,12 +13,14 @@
                 <% end %>
             </div>
             <div class="line-h-1">
-                <h3 class="display-1line mb-0"><%= post.title %></h3>
+                <h3 class="d-1line mb-0">
+                    <%= link_to post.title, post, class:"link" %>
+                </h3>
             </div>
-            <div class="rounded-pill d-inline px-2 font-mid-s bg-<%= post.post_type.name %>">
+            <div class="rounded-pill d-inline px-2 font-ms bg-<%= post.post_type.name %>">
                 <%= post.post_type.name_j %>
             </div>
-            <p class="display-2line mt-2 mb-0"><%= post.content %></p>
+            <p class="d-3line mt-2 mb-0"><%= post.content %></p>
         </div>
         <% if post.image.attached? %>
         <div><%= image_tag post.display_image, class: "w-100" %></div>
