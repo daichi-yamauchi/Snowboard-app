@@ -141,11 +141,17 @@ RSpec.describe User, type: :model do
   describe 'Associate' do
     describe 'post dependent on user for destroy' do
       let(:user) { create(:user) }
-      before do
-        create(:post, user: user)
-      end
+      before { create(:post, user: user) }
       it 'is expected to destroy when user is destroyed' do
         expect { user.destroy }.to change(Post, :count).by(-1)
+      end
+    end
+
+    describe 'comment dependent on user for destroy' do
+      let(:user) { create(:user) }
+      before { create(:comment, user: user) }
+      it 'is expected to destroy when user is destroyed' do
+        expect { user.destroy }.to change(Comment, :count).by(-1)
       end
     end
   end

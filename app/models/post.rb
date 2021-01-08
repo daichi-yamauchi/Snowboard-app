@@ -1,8 +1,8 @@
 class Post < ApplicationRecord
   belongs_to :user
   belongs_to :post_type
+  has_many :comments, dependent: :destroy
   has_one_attached :image
-  default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
   validates :title, presence: true
   validates :post_type_id, presence: true
@@ -11,6 +11,7 @@ class Post < ApplicationRecord
                                     message: '規定のフォーマットにしてください。' },
                     size: { less_than: 5.megabytes,
                             message: '5MB以下にしてください' }
+  default_scope -> { order(created_at: :desc) }
 
   def display_image
     image.variant(resize_to_limit: [300, 300])
