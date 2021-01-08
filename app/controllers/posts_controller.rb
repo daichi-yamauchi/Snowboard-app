@@ -3,10 +3,8 @@ class PostsController < ApplicationController
   before_action :correct_user, only: :destroy
 
   def show
-    @post = Post.find(params[:id])
-    # redirect_to root_url and return if @post.nil?
-    # @posts = @user.posts.paginate(page: params[:page])
-    @comments = @post.comments.all
+    @post ||= Post.find(params[:id])
+    @comment = current_user.comments.build if logged_in?
   end
 
   def new

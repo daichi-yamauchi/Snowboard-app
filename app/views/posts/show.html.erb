@@ -30,6 +30,10 @@
 <% if @post.comments.any? %>
 <h2 class="pt-3">コメント (<%= @post.comments.count %>)</h2>
 <ol>
-    <%= render @comments %>
+    <%= render @post.comments %>
 </ol>
+<% end %>
+
+<% if logged_in? %>
+<%= render 'comments/comment_form' %>
 <% end %>

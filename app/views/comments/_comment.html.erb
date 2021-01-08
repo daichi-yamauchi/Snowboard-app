@@ -8,7 +8,7 @@
                 </span>
                 <% if current_user?(comment.user) %>
                 <%= link_to "delete", comment, method: :delete,
-                                        data: { confirm: "投稿を削除しますか？" },
+                                        data: { confirm: "コメントを削除しますか？" },
                                         class: "material-icons icon-action ml-auto" %>
                 <% end %>
             </div>
