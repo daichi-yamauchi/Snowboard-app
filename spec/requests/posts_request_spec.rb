@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Posts', type: :request do
   let(:user) { create(:user) }
 
-  describe '#create POST posts' do
+  describe '#create' do
     let(:post_type) { create(:post_type) }
     let(:params) { { post: { title: 'test', post_type_id: post_type.id, content: '投稿です' } } }
     context 'when logged in' do
@@ -21,7 +21,7 @@ RSpec.describe 'Posts', type: :request do
     end
   end
 
-  describe '#destroy DELETE post' do
+  describe '#destroy' do
     let!(:post_data) { create(:post) }
     context 'when logged in as correct user' do
       before { post_login(post_data.user) }

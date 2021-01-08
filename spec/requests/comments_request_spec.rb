@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Comments', type: :request do
   let!(:user) { create(:user) }
 
-  describe '#create POST comments' do
+  describe '#create' do
     let(:post_data) { create(:post) }
     context 'when logged in' do
       before { post_login(user) }
@@ -22,19 +22,19 @@ RSpec.describe 'Comments', type: :request do
     end
   end
 
-  xdescribe '#destroy DELETE post' do
-    let(:comment) { create(:comment) }
+  describe '#destroy' do
+    let!(:comment) { create(:comment) }
     context 'when logged in as correct user' do
-      before { post_login(post_data.user) }
+      before { post_login(comment.user) }
       it 'is expected to change Post.count by -1 and to redirect' do
-        expect { delete post_path(post_data) }.to change(Post, :count).by(-1)
+        expect { delete comment_path(comment) }.to change(Comment, :count).by(-1)
         expect(response).to redirect_to root_url
       end
     end
 
     context 'when not logged in' do
       it 'is expected not to change Post.count and to redirect' do
-        expect { delete post_path(post_data) }.to change(Post, :count).by(0)
+        expect { delete comment_path(comment) }.to change(Comment, :count).by(0)
         expect(response).to redirect_to login_url
       end
     end
@@ -42,7 +42,7 @@ RSpec.describe 'Comments', type: :request do
     context 'when logged in as wrong user' do
       before { post_login(user) }
       it 'is expected not to change Post.count and to redirect' do
-        expect { delete post_path(post_data) }.to change(Post, :count).by(0)
+        expect { delete comment_path(comment) }.to change(Comment, :count).by(0)
         expect(response).to redirect_to root_url
       end
     end
