@@ -36,4 +36,14 @@ RSpec.describe Post, type: :model do
       end
     end
   end
+
+  describe 'Associate' do
+    describe 'comment dependent on post for destroy' do
+      let(:post) { create(:post) }
+      before { create(:comment, post: post) }
+      it 'is expected to destroy when post is destroyed' do
+        expect { post.destroy }.to change(Comment, :count).by(-1)
+      end
+    end
+  end
 end

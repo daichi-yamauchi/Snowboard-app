@@ -56,8 +56,8 @@ RSpec.describe 'Followings', type: :system do
       visit root_path
     end
     it do
-      user.feed.paginate(page: 1).each do |micropost|
-        expect(find_by_id("post-#{micropost.id}").text).to include CGI.escapeHTML(micropost.content)
+      user.feed.paginate(page: 1).each do |post|
+        expect(find_by_id("post-#{post.id}").text).to include CGI.escapeHTML(post.content)
       end
     end
   end
