@@ -22,7 +22,7 @@ RSpec.describe 'PostsNews', type: :system do
       it { is_expected.to have_selector '#error_explanation' }
     end
 
-    context 'valid micropost' do
+    context 'valid post' do
       let(:title) { 'テスト' }
       let(:content) { 'テスト投稿です。' }
       let(:post) do

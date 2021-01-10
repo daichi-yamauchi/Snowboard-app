@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:comment][:post_id])
     @comment = current_user.comments.build(comment_params)
+    @comment.image.attach(params[:comment][:image])
     if @comment.save
       flash[:success] = 'コメントしました。'
       redirect_to @post
@@ -22,7 +23,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:post_id, :content)
+    params.require(:comment).permit(:post_id, :content, :image)
   end
 
   def correct_user

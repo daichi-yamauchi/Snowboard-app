@@ -1,8 +1,26 @@
 <%= form_with(model: @comment, local: true) do |f| %>
 <%= render 'shared/error_messages', object: f.object %>
 <div class="field">
-    <%= f.text_area :content, placeholder: "コメントを入力", rows: 5,  class: "col-12" %>
+    <div class="form-group">
+        <%= f.label :content, "コメント" %>
+        <%= f.text_area :content, placeholder: "コメントを入力", rows: 5,  class: "col-12" %>
+    </div>
+    <div class="form-group">
+        <%= f.label :image, "添付画像" %>
+        <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: "form-control-file" %>
+    </div>
     <%= f.hidden_field :post_id, value: @post.id %>
 </div>
 <%= f.submit "コメントを投稿", class: "btn btn-primary btn-block" %>
 <% end %>
+
+
+<script type="text/javascript">
+    $("#comment_image").bind("change", function () {
+        var size_in_megabytes = this.files[0].size / 1024 / 1024;
+        if (size_in_megabytes > 5) {
+            alert("ファイルの最大サイズは5MBです。");
+            $("#comment_image").val("");
+        }
+    });
+</script>
