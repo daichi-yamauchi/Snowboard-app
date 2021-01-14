@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   resources :users do
     member do
-      get :following, :followers
+      get :following, :followers, :liked_post
     end
   end
   resources :account_activations, only: %i[edit]
@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   resources :posts, only: %i[show new create destroy]
   resources :comments, only: %i[create destroy]
   resources :relationships, only: %i[create destroy]
+  resources :like_post_relationships, only: %i[create destroy]
 end

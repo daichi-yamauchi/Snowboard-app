@@ -1,0 +1,5 @@
+<% @post ||= post %>
+<%= form_with(model: current_user.like_post_relationships.find_by(post_id: @post.id),
+            html: { method: :delete }, remote: true) do |f| %>
+<%= f.submit "favorite", class: "material-icons" %>
+<% end %>
