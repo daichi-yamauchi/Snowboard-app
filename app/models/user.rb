@@ -11,6 +11,8 @@ class User < ApplicationRecord
                                    inverse_of: 'followed'
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  has_many :like_post_relationships, dependent: :destroy
+  has_many :liked_post, through: :like_post_relationships, source: :post
 
   attr_accessor :remember_token, :activation_token, :reset_token
 
@@ -99,6 +101,21 @@ class User < ApplicationRecord
   # 現在のユーザーがフォローしてたらtrueを返す
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  # 投稿をいいねする
+  def like(post)
+    liked_post << post
+  end
+
+  # 投稿をいいね解除する
+  def unlike(post)
+    like_post_relationships.find_by(post_id: post.id).destroy
+  end
+
+  # 現在のユーザーがライクしていたらtrueを返す
+  def likes?(post)
+    likes.include?(post)
   end
 
   class << self

@@ -2,7 +2,6 @@
 <%= render 'posts/post_base', { post: @post } %>
 
 <% if @post.comments.any? %>
-<h2 class="mt-3">コメント (<%= @post.comments.count %>)</h2>
 <ol>
     <%= render @post.comments %>
 </ol>

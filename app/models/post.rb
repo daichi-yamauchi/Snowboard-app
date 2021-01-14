@@ -2,6 +2,8 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :post_type
   has_many :comments, dependent: :destroy
+  has_many :like_post_relationships, dependent: :destroy
+  has_many :user_liked_by, through: :like_post_relationships, source: :user
   has_one_attached :image
   validates :user_id, presence: true
   validates :title, presence: true
