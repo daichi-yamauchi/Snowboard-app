@@ -1,10 +1,13 @@
 <%
     menuitems = [
         {icon: "home", text: "ホーム", link: root_path},
-        {icon: "notifications_none", text: "通知", link: ''},
+        # {icon: "notifications_none", text: "通知", link: ''},
+        {icon: "favorite", text: "いいねした投稿", link: '#'},
         {icon: "edit", text: "投稿", aclass:"menu-post order-sm-4", liclass: "justify-content-sm-center", link: new_post_path},
-        {icon: "bookmark_border", text: "ブックマーク", link: ''},
-        {icon: "message", text: "メッセージ", link: ''},
+        {icon: "perm_identity", text: "フォロー", link: following_user_path(current_user)},
+        {icon: "search", text: "メンターを探す", link: users_path},
+        # {icon: "bookmark_border", text: "ブックマーク", link: ''},
+        # {icon: "message", text: "メッセージ", link: ''},
     ]
         %>
 <nav>
