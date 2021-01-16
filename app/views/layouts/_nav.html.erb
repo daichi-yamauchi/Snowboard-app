@@ -4,8 +4,8 @@
         # {icon: "notifications_none", text: "通知", link: ''},
         {icon: "favorite", text: "いいねした投稿", link: logged_in? ? liked_posts_user_path(current_user) : login_path },
         {icon: "edit", text: "投稿", aclass:"menu-post order-md-4", liclass: "justify-content-md-center", link: logged_in? ? new_post_path : login_path },
-        {icon: "perm_identity", text: "フォローメンター", link: logged_in? ? following_user_path(current_user)  : login_path},
-        {icon: "search", text: "メンターを探す", link: users_path},
+        {icon: "perm_identity", text: "フォローリスト", link: logged_in? ? following_user_path(current_user)  : login_path},
+        {icon: "search", text: "ユーザーを探す", link: users_path},
         # {icon: "bookmark_border", text: "ブックマーク", link: ''},
         # {icon: "message", text: "メッセージ", link: ''},
     ]

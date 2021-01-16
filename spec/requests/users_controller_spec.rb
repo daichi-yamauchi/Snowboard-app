@@ -9,7 +9,7 @@ RSpec.describe 'UsersController', type: :request do
 
   describe "#index GET users '/users'" do
     before { get users_path }
-    it { expect(response).to redirect_to login_url }
+    it { expect(response).to have_http_status :success }
   end
 
   describe "#show GET user '/users/:id'" do
