@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(version: 2021_01_11_223143) do
     t.integer "post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index "\"user_id\", \"create_at\"", name: "index_like_post_relationships_on_user_id_and_create_at"
     t.index ["post_id"], name: "index_like_post_relationships_on_post_id"
+    t.index ["user_id", "created_at"], name: "index_like_post_relationships_on_user_id_and_created_at"
     t.index ["user_id", "post_id"], name: "index_like_post_relationships_on_user_id_and_post_id", unique: true
   end
 

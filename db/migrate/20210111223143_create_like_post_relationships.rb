@@ -7,7 +7,7 @@ class CreateLikePostRelationships < ActiveRecord::Migration[6.0]
       t.timestamps
     end
     add_index :like_post_relationships, :post_id
-    add_index :like_post_relationships, [:user_id, :create_at]
+    add_index :like_post_relationships, [:user_id, :created_at]
     add_index :like_post_relationships, [:user_id, :post_id], unique: true
   end
 end
