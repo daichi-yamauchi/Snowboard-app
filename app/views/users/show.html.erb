@@ -17,7 +17,7 @@
 
 <% if @user.posts.any? %>
 <h2>投稿 (<%= @user.posts.count %>)</h2>
-<ol class="p-0">
+<ol>
     <%= render @posts %>
 </ol>
 <%= will_paginate @posts %>

@@ -1,0 +1,7 @@
+<% if @posts.any? %>
+<h2>いいねした投稿 (<%= @posts.count %>)</h2>
+<ol>
+    <%= render @posts %>
+</ol>
+<%= will_paginate @posts %>
+<% end %>

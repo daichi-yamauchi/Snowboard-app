@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: %i[index edit update destroy following followers]
+  before_action :logged_in_user, only: %i[edit update destroy following followers]
   before_action :correct_user, only: %i[edit update]
   before_action :admin_user, only: :destroy
 
@@ -57,6 +57,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
+  end
+
+  def liked_posts
+    @title = 'いいねした投稿'
+    @user = User.find(params[:id])
+    @posts = @user.liked_posts.paginate(page: params[:page])
+    render 'show_liked_post'
   end
 
   private
