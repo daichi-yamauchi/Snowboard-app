@@ -1,9 +1,14 @@
+@import "./variables.scss";
+
 * {
     margin: 0;
     padding: 0;
 }
 
 body {
+    margin-bottom: $bottom-menu-height;
+    height: 100vh;
+
     h1 {
         font-size: 2rem;
     }
@@ -14,5 +19,36 @@ body {
 
     h3 {
         font-size: 1.6rem;
+    }
+}
+
+aside {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+main {
+    max-width: 800px;
+    margin-top: $header-height;
+}
+@media (min-width: 768px) {
+    body {
+        padding-left: $side-menu-width;
+    }
+    aside {
+        left: 0;
+        width: $side-menu-width;
+        height: 100%;
+        padding-top: $header-height;
+    }
+}
+
+@media (min-width: 980px) {
+    main {
+        margin-left: auto;
+        margin-right: auto;
     }
 }

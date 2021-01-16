@@ -1,21 +1,24 @@
 <%
     menuitems = [
         {icon: "home", text: "ホーム", link: root_path},
-        {icon: "notifications_none", text: "通知", link: ''},
-        {icon: "edit", text: "投稿", aclass:"menu-post order-sm-4", liclass: "justify-content-sm-center", link: new_post_path},
-        {icon: "bookmark_border", text: "ブックマーク", link: ''},
-        {icon: "message", text: "メッセージ", link: ''},
+        # {icon: "notifications_none", text: "通知", link: ''},
+        {icon: "favorite", text: "いいねした投稿", link: logged_in? ? liked_posts_user_path(current_user) : login_path },
+        {icon: "edit", text: "投稿", aclass:"menu-post order-md-4", liclass: "justify-content-md-center", link: logged_in? ? new_post_path : login_path },
+        {icon: "perm_identity", text: "フォローリスト", link: logged_in? ? following_user_path(current_user)  : login_path},
+        {icon: "search", text: "ユーザーを探す", link: users_path},
+        # {icon: "bookmark_border", text: "ブックマーク", link: ''},
+        # {icon: "message", text: "メッセージ", link: ''},
     ]
         %>
 <nav>
-    <ul class="nav m-0 p-0 d-flex flex-sm-column">
+    <ul class="nav m-0 p-0 d-flex flex-md-column">
 
         <% menuitems.each do |item| %>
-        <%= link_to item[:link], class: "menu-item px-0 border-bottom border-right p-sm-3 text-dark nav-link #{item[:aclass]}" do %>
+        <%= link_to item[:link], class: "menu-item px-0 border-bottom border-right p-md-3 text-dark nav-link #{item[:aclass]}" do %>
         <li
-            class="h-100 d-flex flex-column flex-sm-row justify-content-center align-items-center justify-content-sm-start <%= item[:liclass] %>">
-            <i class="material-icons font-ml mr-sm-3"><%= item[:icon] %></i>
-            <span class="font-small font-sm-medium"><%= item[:text] %></span>
+            class="h-100 d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-start <%= item[:liclass] %>">
+            <i class="material-icons font-ml mr-md-3"><%= item[:icon] %></i>
+            <span class="font-small font-md-ms"><%= item[:text] %></span>
         </li>
         <% end %>
         <% end %>

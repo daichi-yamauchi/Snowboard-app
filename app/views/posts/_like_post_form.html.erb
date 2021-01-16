@@ -1,6 +1,6 @@
 <% @post ||= post %>
 <div id="like_post_form-<%= @post.id %>">
-    <% if current_user.liked_post.find_by(id: @post.id) %>
+    <% if current_user.liked_posts.find_by(id: @post.id) %>
     <%= render 'posts/unlike_post', { post: @post } %>
     <% else %>
     <%= render 'posts/like_post', { post: @post } %>
