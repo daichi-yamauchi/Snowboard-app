@@ -9,31 +9,13 @@
     height: $bottom-menu-height;
 }
 
-.aside-fixed {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-}
-
 .copyright {
     text-align: center;
     margin-bottom: $bottom-menu-height;
 }
 
-// smallの設定
-@media (min-width: 576px) {
-    .ml-sm-side-menu-width {
-        margin-left: $side-menu-width;
-    }
-
-    .aside-fixed {
-        left: 0;
-        width: $side-menu-width;
-        height: 100%;
-        padding-top: $header-height;
-    }
-
+// mediunmの設定
+@media (min-width: 768px) {
     .menu-post {
         border-radius: 100px;
         margin: 10px auto;

@@ -23,5 +23,32 @@ body {
 }
 
 aside {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     z-index: 10;
+}
+
+main {
+    max-width: 800px;
+    margin-top: $header-height;
+}
+@media (min-width: 768px) {
+    body {
+        padding-left: $side-menu-width;
+    }
+    aside {
+        left: 0;
+        width: $side-menu-width;
+        height: 100%;
+        padding-top: $header-height;
+    }
+}
+
+@media (min-width: 860px) {
+    main {
+        margin-left: auto;
+        margin-right: auto;
+    }
 }

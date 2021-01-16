@@ -76,11 +76,11 @@ body {
         text-decoration: none;
     }
 
-    // smallの設定
+    // mediumの設定
 
-    @media (min-width: 576px) {
-        .font-sm-medium {
-            font-size: 1rem;
+    @media (min-width: 768px) {
+        .font-md-ms {
+            font-size: 0.8rem;
         }
     }
 }
