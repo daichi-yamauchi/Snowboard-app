@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= full_title(yield(:title)) %></title>
+    <%= favicon_link_tag('favicon.ico') %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -14,12 +15,12 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
-<body class="d-flex flex-column min-vh-100 mb-bottom-nav-height mb-sm-0">
+<body class="d-flex flex-column mb-sm-0">
     <%= render 'layouts/header'%>
     <aside class="aside-fixed bg-lightdark d-sm-flex flex-sm-column">
         <%= render 'layouts/nav'%>
-        <div class="d-none d-sm-block mt-5 h-10">
-            Side footer
+        <div class="d-none d-sm-block mt-auto">
+            <%= render 'layouts/footer'%>
         </div>
     </aside>
     <main class="mw-600px p-2 flex-1 ml-sm-side-menu-width mt-header-height">
@@ -30,12 +31,12 @@
             <%= yield %>
         </div>
     </main>
-    <footer class="p-3 d-sm-none">
-        Footer
-    </footer>
     <div class="ml-sm-side-menu-width p-3">
         <%= debug(params) if Rails.env.development? %>
     </div>
+    <footer class="p-3 d-sm-none mt-auto">
+        <%= render 'layouts/footer'%>
+    </footer>
 
 </body>
 

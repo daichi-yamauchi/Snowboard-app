@@ -1,17 +1,7 @@
-// Place all the styles related to the StaticPages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
-
-$header-height: 60px;
-$bottom-menu-height: 60px;
-$side-menu-width: 180px;
+@import "./variables.scss";
 
 .mt-header-height {
     margin-top: $header-height;
-}
-
-.mb-bottom-nav-height {
-    margin-bottom: $bottom-menu-height;
 }
 
 .menu-item {
@@ -24,6 +14,11 @@ $side-menu-width: 180px;
     bottom: 0;
     left: 0;
     width: 100%;
+}
+
+.copyright {
+    text-align: center;
+    margin-bottom: $bottom-menu-height;
 }
 
 // smallの設定
@@ -44,6 +39,10 @@ $side-menu-width: 180px;
         margin: 10px auto;
         border: 0.5px solid #ddd;
     }
+
+    .copyright {
+        margin-bottom: 10px;
+    }
 }
 
 img.avator-icon {
@@ -56,15 +55,5 @@ header.header-nav {
 }
 
 /* 🔧デバッグ用🔧 */
-
-div.side-footer {
-    background: rgb(235, 203, 135);
-    border: solid 1px #ddd;
-}
-
-// body > * {
-//     background: #deffaa;
-//     border: solid 1px black;
-// }
 
 /* 🔧デバッグ用終了🔧 */
