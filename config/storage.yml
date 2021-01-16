@@ -8,7 +8,7 @@ local:
 
 amazon:
   service: S3
-  access_key_id: <%= Rails.application.credentials.bucket[:access_key] %>
-  secret_access_key: <%= Rails.application.credentials.bucket[:secret_key] %>
+  access_key_id: <%= Rails.application.credentials.aws[:access_key_id] %>
+  secret_access_key: <%= Rails.application.credentials.aws[:secret_access_key] %>
   region: <%= Rails.application.credentials.bucket[:region] %>
   bucket: <%= Rails.application.credentials.bucket[:bucket] %>

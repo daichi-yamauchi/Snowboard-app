@@ -1,4 +1,4 @@
-Rails.application.configure do # rubocop:disable Metrics/BlockLength
+Rails.application.configure do
 
   # Code is not reloaded between requests.
   config.cache_classes = true
@@ -48,17 +48,21 @@ Rails.application.configure do # rubocop:disable Metrics/BlockLength
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  # ActionMailer Setting with AWS SES
+  config.action_mailer.default_url_options = { host: 'snomen.jp' }
+  config.action_mailer.delivery_method = :ses
+
   # Mailgunの設定
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :smtp
-  host = 'snomen.herokuapp.com'
-  config.action_mailer.default_url_options = { host: host }
-  ActionMailer::Base.smtp_settings = {
-    port: ENV['MAILGUN_SMTP_PORT'],
-    address: ENV['MAILGUN_SMTP_SERVER'],
-    user_name: ENV['MAILGUN_SMTP_LOGIN'],
-    password: ENV['MAILGUN_SMTP_PASSWORD'],
-    domain: host,
-    authentication: :plain,
-  }
+  # config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.delivery_method = :smtp
+  # host = 'snomen.herokuapp.com'
+  # config.action_mailer.default_url_options = { host: host }
+  # ActionMailer::Base.smtp_settings = {
+  #   port: ENV['MAILGUN_SMTP_PORT'],
+  #   address: ENV['MAILGUN_SMTP_SERVER'],
+  #   user_name: ENV['MAILGUN_SMTP_LOGIN'],
+  #   password: ENV['MAILGUN_SMTP_PASSWORD'],
+  #   domain: host,
+  #   authentication: :plain,
+  # }
 end

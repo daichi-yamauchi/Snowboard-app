@@ -10,7 +10,7 @@ RSpec.describe UserMailer, type: :mailer do
     it 'renders the headers' do
       expect(mail.subject).to eq('【スノメン】アカウントの有効化')
       expect(mail.to).to eq([user.email])
-      expect(mail.from).to eq(['noreply@example.com'])
+      expect(mail.from).to eq(['noreply@snomen.jp'])
     end
 
     it 'renders the body' do
@@ -27,7 +27,7 @@ RSpec.describe UserMailer, type: :mailer do
     it 'renders the headers' do
       expect(mail.subject).to eq('【スノメン】パスワードの再設定')
       expect(mail.to).to eq([user.email])
-      expect(mail.from).to eq(['noreply@example.com'])
+      expect(mail.from).to eq(['noreply@snomen.jp'])
     end
 
     it 'renders the body' do
