@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe UserMailer, type: :mailer do
   let(:user) { create(:user) }
+  let(:html_body) { mail.html_part.body.decoded }
+  let(:text_body) { mail.text_part.body.decoded }
 
   describe 'account_activation' do
     before { user.activation_token = User.new_token }
@@ -13,10 +15,18 @@ RSpec.describe UserMailer, type: :mailer do
       expect(mail.from).to eq(['noreply@snomen.jp'])
     end
 
-    it 'renders the body' do
-      expect(mail.body.encoded).to match(user.name)
-      expect(mail.body.encoded).to match(user.activation_token)
-      expect(mail.body.encoded).to match(CGI.escape(user.email))
+    it 'renders the html body' do
+      expect(html_body).to match(user.name)
+      expect(html_body).to match('snomen.herokuapp.com')
+      expect(html_body).to match(user.activation_token)
+      expect(html_body).to match(CGI.escape(user.email))
+    end
+
+    it 'renders the text body' do
+      expect(text_body).to match(user.name)
+      expect(text_body).to match('snomen.herokuapp.com')
+      expect(text_body).to match(user.activation_token)
+      expect(text_body).to match(CGI.escape(user.email))
     end
   end
 
@@ -30,9 +40,16 @@ RSpec.describe UserMailer, type: :mailer do
       expect(mail.from).to eq(['noreply@snomen.jp'])
     end
 
-    it 'renders the body' do
-      expect(mail.body.encoded).to match(user.reset_token)
-      expect(mail.body.encoded).to match(CGI.escape(user.email))
+    it 'renders the html body' do
+      expect(html_body).to match(user.reset_token)
+      expect(html_body).to match('snomen.herokuapp.com')
+      expect(html_body).to match(CGI.escape(user.email))
+    end
+
+    it 'renders the text body' do
+      expect(text_body).to match(user.reset_token)
+      expect(text_body).to match('snomen.herokuapp.com')
+      expect(text_body).to match(CGI.escape(user.email))
     end
   end
 end

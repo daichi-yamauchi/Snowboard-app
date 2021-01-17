@@ -49,7 +49,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # ActionMailer Setting with AWS SES
-  config.action_mailer.default_url_options = { host: 'snomen.jp' }
+  config.action_mailer.default_url_options = { host: 'snomen.herokuapp.com' }
   config.action_mailer.delivery_method = :ses
 
   # Mailgunの設定
