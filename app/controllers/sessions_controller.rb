@@ -15,6 +15,13 @@ class SessionsController < ApplicationController
     redirect_to root_url
   end
 
+  def guest_login
+    @user = User.find_by(email: 'guest_user@example.com')
+    log_in @user
+    forget(@user)
+    redirect_back_or @user
+  end
+
   private
 
   def success_login

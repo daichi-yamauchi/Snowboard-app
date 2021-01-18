@@ -9,7 +9,7 @@
 </div>
 <div class="form-group">
     <%= f.label :email, "メールアドレス" %>
-    <%= f.email_field :email, class: "form-control", placeholder: "例: user@example.com" %>
+    <%= f.email_field :email, class: "form-control", placeholder: "例: user@example.com", disabled: email_disable %>
 </div>
 <div class="form-group">
     <%= f.label :password, "パスワード" %>
@@ -20,6 +20,6 @@
     <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Password" %>
 </div>
 
-<%= f.submit yield(:submit_button), class: "btn btn-primary btn-block" %>
+<%= f.submit submit_button, class: "btn btn-primary btn-block" %>
 
 <% end %>
