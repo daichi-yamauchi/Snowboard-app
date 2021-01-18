@@ -86,7 +86,7 @@ RSpec.describe 'UsersController', type: :request do
     end
   end
 
-  describe "#edit GET edit_user 'users/i:id/edit' / PATCH user_path" do
+  describe "#edit GET edit_user 'users/i:id/edit'" do
     let(:user1) { create(:user) }
     let(:user2) { create(:user) }
 
@@ -109,26 +109,24 @@ RSpec.describe 'UsersController', type: :request do
   end
 
   describe "#update PATCH user 'user/:id'" do
+    # rubocop:disable Lint/AmbiguousBlockAssociation
     let(:user1) { create(:user) }
     let(:user2) { create(:user) }
     let(:update_info) do
       { user: { name: 'Example User',
-               email: 'user@example.com' } }
+               email: 'user@example.com',
+               password: 'aaaaaaaa',
+               password_confirmation: 'aaaaaaaa',
+               admin: true } }
     end
 
-    describe 'edit admin attribute' do
-      let(:admin_params) do
-        { user: { password: 'password',
-                 password_confirmation: 'password',
-                 admin: true } }
-      end
+    context 'when logged in' do
       before { post_login(user1) }
 
-      it 'is expexted not to change admin attribute' do
-        expect(user1.admin).to be false
-        patch user_path(user1), params: admin_params
-        expect(user1.reload.admin).to be false
-      end
+      it { expect { patch user_path(user1), params: update_info }.to change { User.find(user1.id).name }.to(update_info[:user][:name]) }
+      # it { expect { patch user_path(user1), params: update_info }.to change { User.find(user1.id).password }.to(update_info[:user][:password]) }
+      it { expect { patch user_path(user1), params: update_info }.not_to change { User.find(user1.id).email } }
+      it { expect { patch user_path(user1), params: update_info }.not_to change { User.find(user1.id).admin } }
     end
 
     context 'when not logged in' do
@@ -140,13 +138,14 @@ RSpec.describe 'UsersController', type: :request do
     end
 
     context 'when logged in as wrong user' do
-      before { post_login(user1) }
+      before { post_login(user2) }
       it 'is expexted to redirect to root' do
-        patch user_path(user2), params: update_info
+        patch user_path(user1), params: update_info
         expect(flash).to be_empty
         expect(response).to redirect_to root_url
       end
     end
+    # rubocop:enable Lint/AmbiguousBlockAssociation
   end
 
   describe '#destroy' do
