@@ -1,8 +1,11 @@
 <%=
-will_paginate @clients,
+if defined? clients
+will_paginate clients,
 renderer: WillPaginate::ActionView::BootstrapLinkRenderer,
-list_classes: %w(pagination justify-content-center m-3),
-# aria_label: 'search results page navigation',
+list_classes: %w(pagination justify-content-center m-3 font-ms),
 previous_label: '&laquo;',
-next_label: '&raquo;'
+next_label: '&raquo;',
+inner_window: 1,
+outer_window: 0
+end
 %>

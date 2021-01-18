@@ -9,7 +9,6 @@ RSpec.describe 'UsersEdits', type: :system do
       login(user)
       visit edit_user_path(user)
       fill_in 'ユーザーネーム', with: ''
-      fill_in 'メールアドレス', with: 'testuser@invalid'
       fill_in 'パスワード', with: 'aaa'
       fill_in 'パスワード再入力', with: 'aaa'
       # binding.pry
@@ -18,7 +17,7 @@ RSpec.describe 'UsersEdits', type: :system do
     it { is_expected.to have_current_path user_path(user) }
     it { is_expected.to have_selector '#error_explanation' }
     it { is_expected.to have_selector '.alert-danger' }
-    it { expect(all(:css, '#error_explanation li').size).to eq 3 }
+    it { expect(all(:css, '#error_explanation li').size).to eq 2 }
   end
 
   context 'successful edit' do
@@ -34,10 +33,8 @@ RSpec.describe 'UsersEdits', type: :system do
 
       describe 'account info edit' do
         let(:name) { 'foobar' }
-        let(:email) { 'foo@bar.com' }
         before do
           fill_in 'ユーザーネーム', with: name
-          fill_in 'メールアドレス', with: email
           fill_in 'パスワード', with: ''
           fill_in 'パスワード再入力', with: ''
           click_button '更新'
@@ -47,7 +44,6 @@ RSpec.describe 'UsersEdits', type: :system do
         it do
           user.reload
           expect(user.name).to eq name
-          expect(user.email).to eq email
         end
       end
     end

@@ -28,8 +28,8 @@ end
 users = User.order(:created_at).take(6)
 n = 1
 50.times do
-  title = Faker::Lorem.sentence(word_count: 20)
-  content = Faker::Lorem.sentence(word_count: 200)
+  title = Faker::Lorem.words(number: 5).join
+  content = Faker::Lorem.words(number: 50).join
   post_type = PostType.find_by(id: rand(2) + 1)
   users.each do |user|
     user.posts.seed do |s|
@@ -48,7 +48,7 @@ user_num = User.all.length
 n = 1
 posts.each do |post|
   5.times do
-    content = Faker::Lorem.sentence(word_count: 50)
+    content = Faker::Lorem.words(number: 20).join
     user = User.find_by(id: rand(user_num) + 1)
     post.comments.seed do |s|
       s.id = n

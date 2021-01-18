@@ -20,5 +20,5 @@
 <ol>
     <%= render @posts %>
 </ol>
-<%= will_paginate @posts %>
+<%= render 'shared/pagination', {clients: @posts} %>
 <% end %>

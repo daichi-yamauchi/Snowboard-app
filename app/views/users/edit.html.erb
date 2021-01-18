@@ -1,7 +1,6 @@
 <% provide(:title, "アカウント設定") %>
 
-<% provide(:submit_button, "更新") %>
-<%= render 'users/account_form'%>
+<%= render 'users/account_form', { submit_button: "更新", email_disable: true } %>
 
 <div class="gravatar_edit">
     <%= gravatar_for @user, add_class: 'icon-medium' %>
