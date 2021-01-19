@@ -89,7 +89,7 @@ class User < ApplicationRecord
 
   # アイコン用の画像を返す
   def display_icon
-    image.variant(resize_to_limit: [300, 300])
+    image.variant(combine_options: { gravity: :center, resize: '300x300^', crop: '300x300+0+0' })
   end
 
   # ユーザーのステータスフィードを返す
