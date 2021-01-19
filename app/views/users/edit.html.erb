@@ -1,9 +1,3 @@
 <% provide(:title, "アカウント設定") %>
 
-<%= render 'users/account_form', { submit_button: "更新", email_disable: true } %>
-
-<div class="gravatar_edit">
-    <%= gravatar_for @user, add_class: 'icon-medium' %>
-    <a href="https://gravatar.com/emails" target="_blank" rel="noopener">プロフィール画像の変更</a>
-
-</div>
+<%= render 'users/account_form', { submit_button: "更新", email_disable: true, icon_edit: true } %>

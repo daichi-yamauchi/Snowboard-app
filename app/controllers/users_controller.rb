@@ -34,14 +34,21 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    @user.image.attach(user_params[:image]) if user_params[:image].present?
     info = user_params
     info[:email] = @user.email
     if @user.update(info)
-      flash[:success] = 'Profile updated'
+      flash[:success] = 'プロフィールを更新しました。'
       redirect_to @user
     else
       render 'edit'
     end
+  end
+
+  def gravatar_link
+    @user = User.find(params[:id])
+    @user.image.purge_later
+    redirect_to 'https://gravatar.com/emails'
   end
 
   def destroy
@@ -74,7 +81,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :image)
   end
 
   # beforeアクション

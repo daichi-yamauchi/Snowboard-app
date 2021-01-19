@@ -3,7 +3,7 @@
 <div class="d-flex justify-content-between col-12 p-0">
     <div class="flex-grow-1 p-0 <%= post.image.attached? ? "col-8" : "col-12" %>">
         <div class="d-flex">
-            <%= gravatar_for post.user, add_class: feed_flag ? "icon-small" : "icon-ms" %>
+            <%= icon_image post.user, add_class: feed_flag ? "icon-small" : "icon-ms" %>
             <span class="my-auto ml-2 v-align-middle <%= feed_flag ? "font-ms" : "font-medium" %>">
                 <%= link_to post.user.name, post.user, class:"link" %>が投稿
             </span>

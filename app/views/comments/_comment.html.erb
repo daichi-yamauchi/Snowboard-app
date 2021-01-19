@@ -1,6 +1,6 @@
 <li id="comment-<%= comment.id %>" class="p-3 ls-none border-bottom">
     <div class="d-flex">
-        <%= gravatar_for comment.user, add_class: "icon-small" %>
+        <%= icon_image comment.user, add_class: "icon-small" %>
         <span class="font-ms my-auto ml-2 v-align-middle">
             <%= link_to comment.user.name, comment.user, class:"link" %>がコメント
         </span>

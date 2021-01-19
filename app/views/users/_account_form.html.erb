@@ -20,6 +20,29 @@
     <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Password" %>
 </div>
 
+<% if icon_edit %>
+<h2 class="form-text font-medium">プロフィールアイコン</h2>
+<div class="d-flex mb-3 align-items-center">
+    <div class="w-25 mx-3 align-items-center d-flex flex-column">
+        <span class="font-ms">現在のアイコン</span><br>
+        <%= icon_image @user, add_class: 'icon-medium' %>
+    </div>
+    <div>
+        <div class="form-group m-0">
+            <%= f.label :image, "写真を直接アップロード" %>
+            <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: "form-control-file" %>
+        </div>
+        <hr>
+        <div class="gravatar_edit">
+            <h3 class='form-text font-medium mt-3'>Gravatarで設定する</h3>
+            <%= link_to "Gravatarで設定", { controller: "users", action: "gravatar_link", id: @user.id },
+                                            method: :post, target: :_blank, rel: "noopener noreferrer", class: "ml-3" %>
+            <div class="font-small ml-3">(現在のアイコンは削除されます。)</div>
+        </div>
+    </div>
+</div>
+<% end %>
+
 <%= f.submit submit_button, class: "btn btn-primary btn-block" %>
 
 <% end %>
