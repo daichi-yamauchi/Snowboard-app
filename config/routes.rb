@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get :following, :followers, :liked_posts
+      post :gravatar_link
     end
   end
   resources :account_activations, only: %i[edit]

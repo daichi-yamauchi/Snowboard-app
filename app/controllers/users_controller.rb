@@ -45,6 +45,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def gravatar_link
+    @user = User.find(params[:id])
+    @user.image.purge_later
+    redirect_to 'https://gravatar.com/emails'
+  end
+
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = 'User deleted'
