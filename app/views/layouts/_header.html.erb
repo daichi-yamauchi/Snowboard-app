@@ -12,7 +12,7 @@
         <div class="mr-2 dropdown">
             <% if logged_in? %>
             <div class="dropdown-toggle" data-toggle="dropdown" id="user-menu">
-                <%= gravatar_for current_user, add_class: "icon-medium" %>
+                <%= icon_image current_user, add_class: "icon-medium" %>
             </div>
             <div class="dropdown-menu">
                 <%= link_to "プロフィール", current_user, class: "dropdown-item" %>
