@@ -1,4 +1,6 @@
+# rubocop:disable Metrics/ClassLength
 class User < ApplicationRecord
+  has_one_attached :image
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :active_relationships, class_name: 'Relationship',
@@ -30,6 +32,11 @@ class User < ApplicationRecord
 
   has_secure_password
   validates :password, presence: true, length: { minimum: 8 }, allow_nil: true
+
+  validates :image, content_type: { in: %w[image/jpeg image/gif image/png],
+                                    message: '規定のフォーマットにしてください。' },
+                    size: { less_than: 5.megabytes,
+                            message: '5MB以下にしてください' }
 
   # rspec modelテストでの表示用
   def inspect
@@ -78,6 +85,11 @@ class User < ApplicationRecord
   # パスワード再設定の期限が切れている場合はtrueを返す
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
+  end
+
+  # アイコン用の画像を返す
+  def display_icon
+    image.variant(resize_to_limit: [300, 300])
   end
 
   # ユーザーのステータスフィードを返す
@@ -144,3 +156,5 @@ class User < ApplicationRecord
     self.activation_digest = User.digest(activation_token)
   end
 end
+
+# rubocop:enable Metrics/ClassLength
